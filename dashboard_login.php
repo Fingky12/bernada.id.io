@@ -11,6 +11,9 @@
 <body>
   <?php include('./header/inc_header_dashboard.php')?>
   <div class="container">
+    <div class="gambarLeft">
+      <img src="" alt="Gambar Left">
+    </div>
     <div class="form-box login">
       <h2>Login</h2>
       <form action="auth_proses.php" method="POST">
@@ -23,11 +26,11 @@
           <i class='bx bxs-lock-alt' ></i>
         </div>
         <div class="rememberForgot">
-          <div><input type="checkbox" name="remember_me" id="rememberMe"> Remember Me</div>
+          <div><input type="checkbox"> Remember Me</div>
           <a href="#">Forgot Password?</a>
         </div>
         <button type="submit" name="login_btn" class="btn_login">Login</button>
-        <div class="register-link">Don't have an account? <a href="#">Register</a></div>
+        <div class="login_register">Don't have an account? <a href="dashboard_register.php" class="register_link">Register</a></div>
       </form>
     </div>
   </div>

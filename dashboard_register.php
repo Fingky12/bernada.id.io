@@ -11,6 +11,9 @@
 <body>
   <?php include('./header/inc_header_dashboard.php')?>
   <div class="container">
+    <div class="gambarLeft">
+      <img src="" alt="Gambar Left">
+    </div>
     <div class="form-box register">
       <h2>Register</h2>
       <form action="auth_proses.php" method="POST">
@@ -25,9 +28,12 @@
         <div class="inputBox">
           <input type="password" name="password" placeholder="Password" required>
           <i class='bx bxs-lock-alt' ></i>
-        </div>          
+        </div>
+        <div class="rememberForgot">
+          <div><input type="checkbox"> I agree to the terms & conditions</div>
+        </div>
         <button type="submit" name="register_btn" class="btn_register">Register</button>
-        <div>Already have an account? <a href="#" class="login-link">Login</a></div>
+        <div class="login_register">Already have an account? <a href="dashboard_login.php" class="login-link">Login</a></div>
       </form>
     </div>
   </div>

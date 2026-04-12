@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function(){
     window.addEventListener("scroll", reveal);
     
     window.addEventListener("load", reveal);
+
+    const profileBox = document.querySelector('.profile-box');
+    const avatarCircle = document.querySelector('.avatar-circle');
+
+    avatarCircle.addEventListener('click', () => profileBox.classList.toggle('active'));
     
 });
-    

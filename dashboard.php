@@ -1,9 +1,5 @@
-<?php
-$page = $_GET['page'] ?? 'login' ?? 'register';
-?>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,24 +20,24 @@ $page = $_GET['page'] ?? 'login' ?? 'register';
         <img src="./img/gambar_dashboard.png" alt="Dashboard" />
       </div>
     
-      <form action="#" class="form-box" method="post">
-        <div class="form login <?= ($page == 'login') ? 'active' : '' ?>" id="login-form">
+      <form action="auth_process.php" class="form-box" method="post">
+        <div class="form login" id="login-form"> <!--  -->
           <h2>Sign In Account</h2>
           <div class="input-box">
             <div class="icon"><i class="bx bx-envelope"></i></div>
-            <input type="email" placeholder="Email" required />
+            <input type="email" name="email" placeholder="Email" required />
           </div>
           <div class="input-box">
             <div class="icon"><i class="bx bx-lock"></i></div>
-            <input type="password" placeholder="Password" required />
-          </div>
+            <input type="password" name="password" placeholder="Password" required />
+          </div> 
           <div class="remember-forgot">
             <label><input type="checkbox" /> Remember Me</label>
             <a href="#">Forgot Password?</a>
           </div>
-          <button type="submit" name="login" class="btn">Sign In</button>
-          <div class="register-link">
-            <span>Don't have an account? <a href="?page=register" onclick="showForm('register-form')">Register</a></span>
+          <button type="submit" name="login_btn" class="btn">Sign In</button>
+          <div class="login-register">
+            <span>Don't have an account? <a href="#" class="register-link">Register</a></span>
           </div>
           <div class="social-icons">
             <a href="#" title="Facebook"><i class="bx bxl-facebook"></i></a>
@@ -51,26 +47,26 @@ $page = $_GET['page'] ?? 'login' ?? 'register';
           </div>
         </div>
 
-        <div class="form register <?= ($page == 'register') ? 'active' : '' ?>" id="register-form">
+        <div class="form register" id="register-form">  <!--  -->
           <h2>Sign Up Account</h2>
           <div class="input-box">
             <div class="icon"><i class="bx bx-envelope"></i></div>
-            <input type="text" placeholder="Username" required />
+            <input type="text" name="username" placeholder="Username" required />
           </div>
           <div class="input-box">
             <div class="icon"><i class="bx bx-envelope"></i></div>
-            <input type="email" placeholder="Email" required />
+            <input type="email" name="email" placeholder="Email" required />
           </div>
           <div class="input-box">
             <div class="icon"><i class="bx bx-lock"></i></div>
-            <input type="password" placeholder="Password" required />
+            <input type="password" name="password" placeholder="Password" required />
           </div>
           <div class="remember-forgot">
             <label><input type="checkbox" /> I agree to the Terms & Conditions</label>
           </div>
-          <button type="submit" name="register" class="btn">Sign Up</button>
-          <div class="register-link">
-            <span>Already have an account? <a href="?page=login" onclick="showForm('login-form')">Login</a></span>
+          <button type="submit" name="register_btn" class="btn">Sign Up</button>
+          <div class="login-register">
+            <span>Already have an account? <a href="#" class="login-link">Login</a></span>
           </div>
           <div class="social-icons">
             <a href="#" title="Facebook"><i class="bx bxl-facebook"></i></a>

@@ -3,7 +3,7 @@
 session_start();
 require_once 'config/koneksi.php';
 
-  if (isset($_POST['register_btn'])) {
+  if (isset($_POST['signup_btn'])) {
     $name = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);

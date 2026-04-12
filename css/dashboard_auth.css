@@ -59,60 +59,57 @@
 .form-box {
   position: relative;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
   align-items: center;
   width: 407px;
-  height: 497px;
+  height: 457px;
+  inset: 0;
   background: var(--ow);
   margin: 30px;
   border-radius: 17px;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.1);
-  /* opacity: 0; */
   overflow: hidden;
+  transition: .2s ease-in-out;
+}
+
+.form-box.active {
+  height: 527px;
+  transition: .2s ease-in-out;
+}
+
+.form-box .login {
+  position: absolute;
+  transform: translateX(0px);
+  transition: .6s;
+}
+.form-box .register {
+  position: absolute;
+  transform: translateX(400px);
+  transition: .2s ease-in-out;
+}
+.form-box.active .login {
+  position: absolute;
+  transform: translateX(-400px);
+  transition: .2s ease-in-out;
+}
+.form-box.active .register {
+  position: absolute;
+  transform: translateX(0px);
+  transition: .6s;
 }
 
 .form {
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 34px;
+  padding: 24px;
   width: 100%;
-  height: 100%;
   gap: 25px;
 }
 
 .form h2 {
   font-size: 2rem;
   color: var(--c);
-  padding-bottom: 25px;
 }
-
-.form.login {
-  transform: translateX(400px);
-  transition: .2s ease-in-out;
-}
-.form.login.active {
-  transform: translateX(0px);
-  pointer-events: auto;
-  transition: 1.6s;
-}
-
-.form.register.active {
-  transform: translateX(0px);
-  pointer-events: auto;
-  transition: 1.6s;
-}
-
-.form.register {
-  transform: translateX(-400px);
-  transition: .3s ease-in-out;
-}
-.form.register h2 {
-  padding-bottom: 0;
-}
-
 .input-box {
   position: relative;
   width: 100%;
@@ -169,16 +166,16 @@
   background: var(--ml);
 }
 
-.register-link, .login-link{
+.login-register{
   font-size: .87rem;
 }
 
-.register-link a {
+.login-register a {
   text-decoration: none;
   color: var(--m);
 }
 
-.register-link a:hover {
+.login-register a:hover {
   text-decoration: underline;
   color: var(--ml);
 }

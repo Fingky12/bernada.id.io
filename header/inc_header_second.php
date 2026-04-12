@@ -10,9 +10,6 @@
     </nav>
     <div class="nav-btn">
       <a href="dashboard.php">
-        <button class="btn-register btn">Daftar</button>
-      </a>
-      <a href="dashboard.php">
         <button class="btn-login btn">Masuk</button>
       </a>
     </div>

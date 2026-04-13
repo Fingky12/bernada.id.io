@@ -56,7 +56,7 @@
   background: var(--iv);
 }
 
-.form-box {
+.wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -71,27 +71,27 @@
   transition: .2s ease-in-out;
 }
 
-.form-box.active {
+.wrapper.active {
   height: 527px;
   transition: .2s ease-in-out;
 }
 
-.form-box .login {
+.wrapper .login {
   position: absolute;
   transform: translateX(0px);
   transition: .6s;
 }
-.form-box .register {
+.wrapper .register {
   position: absolute;
   transform: translateX(400px);
   transition: .2s ease-in-out;
 }
-.form-box.active .login {
+.wrapper.active .login {
   position: absolute;
   transform: translateX(-400px);
   transition: .2s ease-in-out;
 }
-.form-box.active .register {
+.wrapper.active .register {
   position: absolute;
   transform: translateX(0px);
   transition: .6s;
@@ -100,16 +100,25 @@
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 24px;
+  justify-content: space-evenly;
+  text-align: center;
   width: 100%;
-  gap: 25px;
+  padding: 24px;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form h2 {
+  /* align-items: center; */
   font-size: 2rem;
   color: var(--c);
+  padding-bottom: 25px;
 }
+
 .input-box {
   position: relative;
   width: 100%;
@@ -199,4 +208,60 @@
 .social-icons a i:hover {
   color: var(--ml);
   border: 2px solid var(--ml);
+}
+
+.alert-box {
+  position: fixed;
+  top: 140px;
+  left: 50%;
+  width: 230px;
+  height: 40px;
+  border-radius: 12px;
+  margin: 0 auto;
+  padding: 0% 20px;
+  background: rgb(221, 221, 221);
+  transform: translateX(-50%);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.alert-box .alert-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--c);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--g);
+  font-weight: 500;
+}
+
+.alert::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1%;
+  background: rgba(2, 255, 107, 0.788);
+  animation: fadeOut 3s forwards;
+}
+
+.alert.error::after {
+  background: rgba(255, 50, 50, 0.767);
+}
+
+.alert i {
+  font-size: 2.2rem;
+  color: green;
+  margin-right: 8px;
+}
+
+.alert.error i {
+  color: red;
 }

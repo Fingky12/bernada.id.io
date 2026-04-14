@@ -41,14 +41,17 @@ require_once 'config/koneksi.php';
         'type' => 'success',
         'message' => 'Login Successful'
     ];
-  }else {
+    header('Location: halaman.php');
+    exit();
+  }
+  else {
     $_SESSION['alerts'][] = [
         'type' => 'error',
         'message' => 'Incorret email or password!'
     ];
 $_SESSION['active_form'] = 'login';
   }
-  header('Location: halaman.php');
+  header('Location: dashboard.php');
   exit();
   }
 ?>

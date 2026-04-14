@@ -25,6 +25,16 @@ document.addEventListener("DOMContentLoaded", function(){
     const profileBox = document.querySelector('.profile-box');
     const avatarCircle = document.querySelector('.avatar-circle');
 
-    avatarCircle.addEventListener('click', () => profileBox.classList.toggle('show'));
-    
+    if (avatarCircle) avatarCircle.addEventListener('click', () => profileBox.classList.toggle('show'));
+
+
+    if (alertBox) {
+        setTimeout(() => alertBox.classList.add('show'), 50);
+        
+        setTimeout(() => {
+            alertBox.classList.remove('show');
+            setTimeout(() => alertBox.classList.remove('show'), 1000);
+        }, 3000);
+    };
+
 });

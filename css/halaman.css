@@ -92,18 +92,18 @@ span {
   line-height: 40px;
   text-align: center;
   font-size: 1rem;
-  color: var(--m);
+  color: var(--c);
   font-weight: 600;
   cursor: pointer;
 }
 .profile-box .avatar-circle i {
-  font-size: 1.7rem;
-  color: var(--g2);
+  font-size: 1.2rem;
+  color: var(--iv);
   padding: 5px;
   margin-left: 12px;
-  background: var(--ow);
+  background: var(--m);
   border-radius: 50%;
-  border: 2px solid var(--g2);
+  border: 1px solid var(--m);
 }
 
 .profile-box .dropdown-content {
@@ -232,4 +232,66 @@ span {
 .footer-bottom p {
   font-size: 11px;
   color: var(--sg);
+}
+
+
+.alert-box {
+  position: fixed;
+  inset: 0;
+  top: 35px;
+  width: 340px;
+  height: 40px;
+  border-radius: 7px;
+  margin: 0 auto;
+  padding: 0% 15px;
+  background: rgb(255, 255, 255);
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  transform: translateY(calc(-100% - 300px));
+  transition: .5s ease;  
+}
+
+.alert-box.show {
+  transform: translateY(0);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--g);
+  font-weight: 500;
+}
+
+.alert::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  background: rgb(0, 202, 0);
+  animation: progress 3s linear forwards;
+}
+
+.alert.error::after {
+  background: rgba(255, 50, 50, 0.767);
+}
+
+ @keyframes progress {
+  100% {
+    width: 0;
+  }
+ }
+
+
+.alert i {
+  font-size: 2.1rem;
+  color: rgb(0, 202, 0);
+  margin-right: 3px;
+}
+
+.alert.error i {
+  color: rgba(255, 50, 50, 0.767);
 }

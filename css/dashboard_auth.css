@@ -212,25 +212,23 @@
 
 .alert-box {
   position: fixed;
-  top: 140px;
-  left: 50%;
-  width: 230px;
+  inset: 0;
+  top: 35px;
+  width: 340px;
   height: 40px;
-  border-radius: 12px;
+  border-radius: 7px;
   margin: 0 auto;
-  padding: 0% 20px;
-  background: rgb(221, 221, 221);
-  transform: translateX(-50%);
+  padding: 0% 15px;
+  background: rgb(255, 255, 255);
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   overflow: hidden;
+  transform: translateY(calc(-100% - 300px));
+  transition: .5s ease;  
 }
 
-.alert-box .alert-success {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  color: var(--c);
+.alert-box.show {
+  transform: translateY(0);
 }
 
 .alert {
@@ -244,24 +242,31 @@
 .alert::after {
   content: '';
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 1%;
-  background: rgba(2, 255, 107, 0.788);
-  animation: fadeOut 3s forwards;
+  height: 5%;
+  background: rgb(0, 202, 0);
+  animation: progress 3s linear forwards;
 }
 
 .alert.error::after {
   background: rgba(255, 50, 50, 0.767);
 }
 
+ @keyframes progress {
+  100% {
+    width: 0;
+  }
+ }
+
+
 .alert i {
-  font-size: 2.2rem;
-  color: green;
-  margin-right: 8px;
+  font-size: 2.1rem;
+  color: rgb(0, 202, 0);
+  margin-right: 3px;
 }
 
 .alert.error i {
-  color: red;
+  color: rgba(255, 50, 50, 0.767);
 }

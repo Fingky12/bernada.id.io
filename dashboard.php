@@ -1,10 +1,18 @@
-<?php
-session_start();
+<?php 
+  session_start();
+  require_once 'config/koneksi.php';
 
-$alerts = $_SESSION['alerts'] ?? [];
-$active_form = $_SESSION['active_form'] ?? 'login';
+  $name = $_SESSION['name'] ?? null;
+  $alerts = $_SESSION['alerts'] ?? [];
+  $active_form = $_SESSION['active_form'] ?? '';
+
+  session_unset();
+
+  if ($name !== null) $_SESSION['name'] = $name; 
+
+
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,20 +31,24 @@ $active_form = $_SESSION['active_form'] ?? 'login';
       <a href="halaman.php" class="logo">BERNADA<span>.ID</span></a>
     </div>
 
-    <div class="alert-box">
-      <div class="alert-success">
-        <i class='bx bx-check' ></i>
-        <span>Registrasi Berhasil!!</span>
-      </div>
+    <?php if (!empty($alerts)): ?>
+    <div class="alert-box" >
+      <?php foreach ($alerts as $alert): ?>
+        <div class="alert <?= $alert['type']; ?>">
+          <i class='bx <?= $alert['type'] === 'success' ? 'bxs-check-circle' : 'bxs-error-circle'; ?>'></i>
+          <span><?= $alert['message']; ?></span>
+        </div>
+      <?php endforeach; ?>
     </div>
+    <?php endif; ?>
 
     <div class="container">
       <div class="img-dashboard">
         <img src="./img/gambar_dashboard.png" alt="Dashboard" />
       </div>
 
-      <div class="wrapper">
-        <div class="form login" id="login-form"> <!--  -->
+      <div class="wrapper <?= $active_form === 'register' ? 'active' : ''; ?>">
+        <div class="form login" id="login-form">
           <h2>Sign In Account</h2>
           <form action="auth_proses.php" method="post">
             <div class="input-box">

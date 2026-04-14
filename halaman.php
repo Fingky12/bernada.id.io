@@ -1,3 +1,16 @@
+<?php 
+  session_start();
+  require_once 'config/koneksi.php';
+  
+  $name = $_SESSION['name'] ?? null;
+  $alerts = $_SESSION['alerts'] ?? [];
+  $active_form = $_SESSION['active_form'] ?? '';
+
+  session_unset();
+
+  unset($_SESSION['alerts']);
+
+?>
 
 
 <!DOCTYPE html>
@@ -15,6 +28,19 @@
 </head>
 <body>
   <?php include("./header/inc_header.php") ?>
+
+
+    <?php if (!empty($alerts)): ?>
+    <div class="alert-box" >
+      <?php foreach ($alerts as $alert): ?>
+        <div class="alert <?= $alert['type']; ?>">
+          <i class='bx <?= $alert['type'] === 'success' ? 'bxs-check-circle' : 'bxs-error-circle'; ?>'></i>
+          <span><?= $alert['message']; ?></span>
+        </div>
+      <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+
   <div class="main">
     <section class="beranda" id="beranda">
       <div class="hero hero-left reveal-left">

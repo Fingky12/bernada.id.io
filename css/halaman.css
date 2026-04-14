@@ -279,6 +279,10 @@ span {
   background: rgba(255, 50, 50, 0.767);
 }
 
+.alert span {
+  color: var(--c);
+}
+
  @keyframes progress {
   100% {
     width: 0;

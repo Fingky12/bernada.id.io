@@ -8,7 +8,7 @@
 
   session_unset();
 
-  unset($_SESSION['alerts']);
+  if ($name !== null) $_SESSION['name'] = $name;
 
 ?>
 

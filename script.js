@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const profileBox = document.querySelector('.profile-box');
     const avatarCircle = document.querySelector('.avatar-circle');
+    const alertBox = document.querySelector('.alert-box');
 
     if (avatarCircle) avatarCircle.addEventListener('click', () => profileBox.classList.toggle('show'));
-
 
     if (alertBox) {
         setTimeout(() => alertBox.classList.add('show'), 50);

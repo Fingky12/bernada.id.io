@@ -6,10 +6,15 @@
   $alerts = $_SESSION['alerts'] ?? [];
   $active_form = $_SESSION['active_form'] ?? '';
 
+  if(!isset($_SESSION['name'])){
+      header("Location: dashboard.php");
+      exit;
+  }
+  
   session_unset();
-
+  
   if ($name !== null) $_SESSION['name'] = $name;
-
+  
 ?>
 
 

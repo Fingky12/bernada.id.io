@@ -1,20 +1,20 @@
 <?php 
   session_start();
-  require_once 'config/koneksi.php';
-  
-  $name = $_SESSION['name'] ?? null;
-  $alerts = $_SESSION['alerts'] ?? [];
-  $active_form = $_SESSION['active_form'] ?? '';
+    require_once 'config/koneksi.php';
 
-  if(!isset($_SESSION['name'])){
-      header("Location: dashboard.php");
+    $name = $_SESSION['name'] ?? null;
+    $alerts = $_SESSION['alerts'] ?? [];
+    $active_form = $_SESSION['active_form'] ?? '';
+    
+    if(!isset($_SESSION['name'])) {
+      header('Location: dashboard.php');
       exit;
-  }
-  
-  session_unset();
-  
-  if ($name !== null) $_SESSION['name'] = $name;
-  
+      }
+
+      session_unset();
+
+      if ($name !== null) $_SESSION['name'] = $name;
+
 ?>
 
 
@@ -37,9 +37,10 @@
     <h1>Buat Undangan Digital</h1>
     <p>Isi data pernikahan kamu, undangan siap dalam hitungan menit!</p>
   </div>
-
+  
+  <!-- MAIN -->
   <div class="container">
-  <!-- STEPS BAR -->
+    <!-- STEPS BAR -->
     <div class="steps-bar">
       <div class="step-item active" id="tab1"><span class="step-num">1</span> Data Pengantin</div>
       <span class="step-arrow">›</span>
@@ -49,14 +50,12 @@
       <span class="step-arrow">›</span>
       <div class="step-item" id="tab4"><span class="step-num">4</span> Kontak</div>
     </div>
-
-  <!-- MAIN -->
     <!-- ALERT -->
     <div class="alert alert-error"   id="alertError"></div>
     <div class="alert alert-success" id="alertSuccess"></div>
-    <!-- FORM -->
-    <form id="formUndangan" novalidate>
 
+    <!-- FORM -->
+    <form id="formUndangan" action="config/proses_undangan.php" method="POST" novalidate>
       <!-- STEP 1 - PENGANTIN -->
       <div class="card step-section" id="sec1">
         <div class="card-title"><i class='bx bxs-book-heart' ></i> Data Pengantin</div>
@@ -179,8 +178,8 @@
           <button type="submit" class="btn btn-primary"><i class='bx bx-send' ></i> Buat Undangan Sekarang</button>
         </div>
       </div>
-
     </form>
+  </div>
 
     <!-- SUCCESS PAGE -->
     <div class="success-page card" id="successPage">
@@ -198,8 +197,6 @@
       </div>
     </div>
 
-  </div>
-
   <!-- LOADING OVERLAY -->
   <div id="loadingOverlay">
     <div class="spinner-box">
@@ -211,89 +208,6 @@
 
     <?php include("./footer/inc_footer_second.php") ?>
 <script src="script.js"></script>
-    <!-- <script>
 
-  let currentStep = 1;
-
-  function setStep(step) {
-    for (let i = 1; i <= 4; i++) {
-      const sec = document.getElementById('sec' + i);
-      const tab = document.getElementById('tab' + i);
-      sec.style.display = (i === step) ? 'block' : 'none';
-      tab.className = 'step-item' + (i === step ? ' active' : '') + (i < step ? ' done' : '');
-    }
-    currentStep = step;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function nextStep(from) {
-    if (from === 1) {
-      const p = document.querySelector('[name=nama_pria]').value.trim();
-      const w = document.querySelector('[name=nama_wanita]').value.trim();
-      if (!p || !w) { showAlert('error', 'Nama pengantin pria dan wanita wajib diisi!'); return; }
-    }
-    if (from === 2) {
-      const tgl = document.querySelector('[name=tanggal_nikah]').value;
-      const lok = document.querySelector('[name=lokasi]').value.trim();
-      const wm  = document.querySelector('[name=waktu_mulai]').value;
-      const ws  = document.querySelector('[name=waktu_selesai]').value;
-      if (!tgl || !lok || !wm || !ws) { showAlert('error', 'Tanggal, waktu, dan lokasi wajib diisi!'); return; }
-    }
-    hideAlert();
-    setStep(from + 1);
-  }
-
-  function prevStep(from) { setStep(from - 1); }
-
-  function pilihTema(el, nama) {
-    document.querySelectorAll('.tema-card').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('temaValue').value = nama;
-  }
-
-  function showAlert(type, msg) {
-    hideAlert();
-    const el = document.getElementById(type === 'error' ? 'alertError' : 'alertSuccess');
-    el.textContent = msg;
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-  function hideAlert() {
-    document.getElementById('alertError').style.display   = 'none';
-    document.getElementById('alertSuccess').style.display = 'none';
-  }
-
-  // Submit form via AJAX
-  document.getElementById('formUndangan').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const wa = document.querySelector('[name=no_whatsapp]').value.trim();
-    if (!wa) { showAlert('error', 'Nomor WhatsApp wajib diisi!'); return; }
-
-    document.getElementById('loadingOverlay').classList.add('show');
-    hideAlert();
-
-    const formData = new FormData(this);
-
-    fetch('proses_undangan.php', { method: 'POST', body: formData })
-      .then(r => r.json())
-      .then(data => {
-        document.getElementById('loadingOverlay').classList.remove('show');
-        if (data.status === 'success') {
-          document.getElementById('formUndangan').style.display = 'none';
-          document.getElementById('successPage').style.display  = 'block';
-          document.getElementById('kodeUndangan').textContent   = data.kode;
-          document.getElementById('waTarget').textContent       = wa;
-          document.querySelector('.steps-bar').style.display    = 'none';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          showAlert('error', data.message || 'Terjadi kesalahan, coba lagi.');
-        }
-      })
-      .catch(() => {
-        document.getElementById('loadingOverlay').classList.remove('show');
-        showAlert('error', 'Gagal terhubung ke server. Periksa koneksi kamu.');
-      });
-  });
-</script> -->
 </body>
 </html>

@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 
     function reveal() {
         let reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
@@ -36,9 +36,7 @@ document.addEventListener("DOMContentLoaded", function(){
             setTimeout(() => alertBox.classList.remove('show'), 1000);
         }, 3000);
     };
-
-});
-
+  });
 
   let currentStep = 1;
 
@@ -57,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function(){
     if (from === 1) {
       const p = document.querySelector('[name=nama_pria]').value.trim();
       const w = document.querySelector('[name=nama_wanita]').value.trim();
-      if (!p || !w) { showAlert('error', 'Nama pengantin pria dan wanita wajib diisi!'); return; }
+      const a = document.querySelector('[name=ayah_pria]').value.trim();
+      const aw = document.querySelector('[name=ayah_wanita]').value.trim();
+      if (!p || !w || !a || !aw) { showAlert('error', 'Nama pengantin pria dan wanita serta nama orang tua wajib diisi!'); return; }
     }
     if (from === 2) {
       const tgl = document.querySelector('[name=tanggal_nikah]').value;
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('alertError').style.display   = 'none';
     document.getElementById('alertSuccess').style.display = 'none';
   }
-
+  
   // Submit form via AJAX
   document.getElementById('formUndangan').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const formData = new FormData(this);
 
-    fetch('proses_undangan.php', { method: 'POST', body: formData })
+    fetch('config/proses_undangan.php', { method: 'POST', body: formData })
       .then(r => r.json())
       .then(data => {
         document.getElementById('loadingOverlay').classList.remove('show');
@@ -122,3 +122,20 @@ document.addEventListener("DOMContentLoaded", function(){
       });
   });
 
+    // const form=document.getElementById('formUndangan');
+    //   if(form){
+    //     form.addEventListener('submit',async function(e){
+    //     e.preventDefault();
+    //     document.getElementById('loadingOverlay').style.display='flex';
+    //     const fd=new FormData(form);
+    //     const res=await fetch('simpan-undangan-full.php',{method:'POST',body:fd});
+    //     const data=await res.json();
+    //     document.getElementById('loadingOverlay').style.display='none';
+    //     if(data.success){
+    //       document.querySelector('form').style.display='none';
+    //       document.getElementById('successPage').style.display='block';
+    //       document.getElementById('kodeUndangan').innerText=data.invoice;
+    //       document.getElementById('waTarget').innerText=data.wa;
+    //     }
+    //   });
+    // }

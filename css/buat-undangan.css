@@ -257,73 +257,154 @@ textarea {
 input[name=tema] {
   display: none;
 }
-
 /* ── TOMBOL ── */
-.btn-row { display: flex; gap: 12px; margin-top: 1.5rem; }
-.btn {
-  flex: 1; padding: 13px;
-  border-radius: 9px; font-size: 15px; font-weight: 600;
-  cursor: pointer; border: none; transition: all .2s;
+.btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.5rem;
 }
-.btn-primary { background: #C0393B; color: #fff; }
-.btn-primary:hover { background: #a52d2f; }
+
+.btn {
+  flex: 1;
+  padding: 13px;
+  border-radius: 9px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all .2s;
+}
+
+.btn-primary {
+  background: #C0393B;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #a52d2f;
+}
 .btn-outline {
-  background: #fff; color: #C0393B;
+  background: #fff;
+  color: #C0393B;
   border: 2px solid #C0393B;
 }
-.btn-outline:hover { background: #fff5f5; }
+.btn-outline:hover {
+  background: #fff5f5;
+}
 
 /* ── ALERT ── */
 .alert {
-  padding: 12px 16px; border-radius: 8px;
-  font-size: 14px; margin-bottom: 1rem; display: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  display: none;
 }
-.alert-error   { background: #fdeaea; color: #a32d2d; border: 1px solid #f5c1c1; }
-.alert-success { background: #eaf7f0; color: #1a6640; border: 1px solid #5cb88a; }
+.alert-error   {
+  background: #fdeaea;
+  color: #a32d2d;
+  border: 1px solid #f5c1c1;
+}
+.alert-success {
+  background: #eaf7f0;
+  color: #1a6640;
+  border: 1px solid #5cb88a;
+}
 
 /* ── SUCCESS PAGE ── */
 .success-page {
-  text-align: center; padding: 3rem 1rem;
+  text-align: center;
+  padding: 3rem 1rem;
   display: none;
 }
 .success-icon {
-  width: 80px; height: 80px; border-radius: 50%;
-  background: #eaf7f0; margin: 0 auto 1.25rem;
-  display: flex; align-items: center; justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #eaf7f0;
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 36px;
 }
-.success-page h2 { font-size: 22px; color: #1a1a1a; margin-bottom: 8px; }
-.success-page p  { color: #666; font-size: 15px; margin-bottom: .4rem; }
-.kode-box {
-  background: #fff5f5; border: 1.5px dashed #C0393B;
-  border-radius: 10px; padding: 14px 20px;
-  margin: 1.25rem auto; max-width: 300px;
+.success-page h2 {
+  font-size: 22px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
 }
-.kode-box .label { font-size: 12px; color: #888; margin-bottom: 4px; }
-.kode-box .kode  { font-size: 22px; font-weight: 700; color: #C0393B; letter-spacing: .1em; }
+.success-page p {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: .4rem;
+}
+.kode-box {
+  background: #fff5f5;
+  border: 1.5px dashed #C0393B;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin: 1.25rem auto;
+  max-width: 300px;
+}
+.kode-box .label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.kode-box .kode  {
+  font-size: 22px; 
+  font-weight: 700; 
+  color: #C0393B;
+  letter-spacing: .1em;
+}
 
 /* ── LOADING OVERLAY ── */
 #loadingOverlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,.45); z-index: 999;
-  align-items: center; justify-content: center;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
 }
-#loadingOverlay.show { display: flex; }
+#loadingOverlay.show {
+  display: flex;
+}
 .spinner-box {
-  background: #fff; border-radius: 14px;
-  padding: 2rem 2.5rem; text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  text-align: center;
 }
 .spinner {
-  width: 44px; height: 44px; border: 4px solid #f0dada;
-  border-top-color: #C0393B; border-radius: 50%;
-  animation: spin .8s linear infinite; margin: 0 auto 14px;
+  width: 44px;
+  height: 44px;
+  border: 4px solid #f0dada;
+  border-top-color: #C0393B;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 0 auto 14px;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
-.spinner-box p { font-size: 14px; color: #555; }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner-box p {
+  font-size: 14px;
+  color: #555; }
 
 @media (max-width: 560px) {
-  .field-row { grid-template-columns: 1fr; }
-  .tema-grid { grid-template-columns: 1fr 1fr; }
-  .card { padding: 1.25rem; }
-  .hero-strip h1 { font-size: 22px; }
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+  .tema-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .card {
+    padding: 1.25rem;
+  }
+  .hero-strip h1 {
+    font-size: 22px;
+  }
 }

@@ -2,7 +2,8 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <h2>BERNADA<span>.ID</span></h2>
+        <a href="halaman.php" class="logo-footer">BERNADA<span>.ID</span></a>
+        <p>Platform undangan digital modern dengan pengalaman elegan dan profesional untuk momen spesial Anda.</p>
       </div>
 
       <div class="footer-right">

@@ -3,6 +3,17 @@
 session_start();
 require_once 'config/koneksi.php';
 
+// ✅ FIX: Kalau sudah login, BLOK semua proses login & register
+// User harus logout dulu sebelum bisa login akun lain
+if (isset($_SESSION['name'])) {
+  $_SESSION['alerts'][] = [
+    'type'    => 'error',
+    'message' => 'Kamu sudah login! Logout dulu untuk ganti akun.'
+  ];
+  header('Location: dashboard.php');
+  exit();
+}
+
   if (isset($_POST['register_btn'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -24,7 +35,7 @@ require_once 'config/koneksi.php';
       $_SESSION['active_form'] = 'login';
     }
 
-    header('Location: dashboard.php');
+    header('Location: dashboard.php?login=success');
     exit();
   }
 
@@ -41,7 +52,7 @@ require_once 'config/koneksi.php';
         'type' => 'success',
         'message' => 'Login Successful'
     ];
-    header('Location: halaman.php');
+    header('Location: dashboard.php');
     exit();
   }
   else {

@@ -1,33 +1,33 @@
 <?php
 // ============================================
-// FILE: config/db.php
-// Konfigurasi koneksi database XAMPP
-// ==
+// FILE: config/koneksi.php
+// ✅ SUDAH DIPERBAIKI
+// ============================================
+
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');        // default XAMPP
-define('DB_PASS', '');            // default XAMPP (kosong)
-define('DB_NAME', 'bernada');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'bernada'); // ← sesuai database kamu
 
 // Konfigurasi Fonnte WhatsApp API
 define('FONNTE_TOKEN', 'DK3J8xh2pyetxgj1dpC8');
-define('ADMIN_WA',    '6281939195110'); // nomor WA admin, format 628xxx
+define('ADMIN_WA',     '6281939195110');
 
-// Konfigurasi Email (Gmail SMTP
+// Konfigurasi Email (Gmail SMTP)
 define('MAIL_HOST', 'smtp.gmail.com');
-define('MAIL_USER', 'bernada.id811@gmail.com');
-define('MAIL_PASS', 'qkhl rwcs oocv zgin'); // App Password Gmail (bukan password biasa
 define('MAIL_PORT', 587);
+define('MAIL_USER', 'bernada.id811@gmail.com');
+define('MAIL_PASS', 'qkhl rwcs oocv zgin');
 define('MAIL_FROM', 'bernada.id811@gmail.com');
 define('MAIL_NAME', 'Bernada.ID');
 
+// Koneksi mysqli (untuk auth)
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
 
-
-if($conn->connect_error){
-  die("Koneksi gagal...");
-  }
-
-// Koneksi PDO
+// Koneksi PDO (untuk proses undangan)
 try {
     $pdo = new PDO(
         "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
@@ -41,7 +41,3 @@ try {
 } catch (PDOException $e) {
     die(json_encode(['status' => 'error', 'message' => 'Koneksi database gagal: ' . $e->getMessage()]));
 }
-  
-
-?>
-

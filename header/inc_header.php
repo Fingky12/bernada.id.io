@@ -6,7 +6,7 @@
       <a href="#fitur">Fitur</a>
       <a href="#tema">Tema</a>
       <a href="#harga">Harga</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">Kontak</a>
       <a href="#tentang">Tentang</a>
     </nav>
 
@@ -17,8 +17,8 @@
           <!-- <img src="./img/avatar.png" alt="User Avatar" class="avatar-img" /> -->
           <div class="dropdown-content">
             <a href="#">Profile</a>
-            <a href="#">Settings</a>
-            <a href="logout.php">Logout</a>
+            <a href="#">Pengaturan</a>
+            <a href="logout.php">Keluar</a>
           </div>
       </div>
     </div>

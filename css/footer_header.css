@@ -127,15 +127,24 @@ span {
   gap: 14px;
 }
 
-.footer-brand h2 {
+.footer-brand .logo-footer {
+  text-decoration: none;
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 15px;
   color: var(--ow);
 }
 
 .footer-brand span {
   color: var(--ml);
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: var(--sg);
+  line-height: 1.6;
+  max-width: 500px;
 }
 
 .footer-social {

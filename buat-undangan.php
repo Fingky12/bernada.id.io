@@ -39,23 +39,24 @@
   </div>
   
   <!-- MAIN -->
-  <div class="container">
-    <!-- STEPS BAR -->
-    <div class="steps-bar">
-      <div class="step-item active" id="tab1"><span class="step-num">1</span> Data Pengantin</div>
-      <span class="step-arrow">›</span>
-      <div class="step-item" id="tab2"><span class="step-num">2</span> Info Acara</div>
-      <span class="step-arrow">›</span>
-      <div class="step-item" id="tab3"><span class="step-num">3</span> Pilih Tema</div>
-      <span class="step-arrow">›</span>
-      <div class="step-item" id="tab4"><span class="step-num">4</span> Kontak</div>
-    </div>
-    <!-- ALERT -->
-    <div class="alert alert-error"   id="alertError"></div>
-    <div class="alert alert-success" id="alertSuccess"></div>
-
-    <!-- FORM -->
+  <!-- FORM -->
     <form id="formUndangan" action="config/proses_undangan.php" method="POST" novalidate>
+      <!-- STEPS BAR -->
+      <div class="steps-bar">
+        <div class="step-item active" id="tab1"><span class="step-num">1</span> Data Pengantin</div>
+        <span class="step-arrow">›</span>
+        <div class="step-item" id="tab2"><span class="step-num">2</span> Info Acara</div>
+        <span class="step-arrow">›</span>
+        <div class="step-item" id="tab3"><span class="step-num">3</span> Pilih Tema</div>
+        <span class="step-arrow">›</span>
+        <div class="step-item" id="tab4"><span class="step-num">4</span> Kontak</div>
+      </div>
+      <!-- ALERT -->
+      <div class="alert alert-error"   id="alertError"></div>
+      <div class="alert alert-success" id="alertSuccess"></div>
+
+
+
       <!-- STEP 1 - PENGANTIN -->
       <div class="card step-section" id="sec1">
         <div class="card-title"><i class='bx bxs-book-heart' ></i> Data Pengantin</div>
@@ -179,7 +180,6 @@
         </div>
       </div>
     </form>
-  </div>
 
     <!-- SUCCESS PAGE -->
     <div class="success-page card" id="successPage">
@@ -193,7 +193,7 @@
       <p>Notifikasi telah dikirim ke <strong id="waTarget">-</strong></p>
       <p style="color:#aaa;font-size:13px;margin-top:6px">Tim kami akan segera memproses undanganmu.</p>
       <div class="btn-row" style="margin-top:1.5rem;justify-content:center">
-        <a href="/" class="btn btn-outline" style="text-decoration:none;text-align:center;max-width:200px">← Beranda</a>
+        <a href="halaman.php" class="btn btn-outline" style="text-decoration:none;text-align:center;max-width:200px">← Beranda</a>
       </div>
     </div>
 

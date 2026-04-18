@@ -84,7 +84,7 @@ span {
   background: var(--ml);
   color: var(--ow);
 }
-  
+
 .profile-box .avatar-circle {
   display: flex;
   align-items: center;
@@ -224,8 +224,8 @@ span {
 }
 
 .footer-bottom {
-  margin-top: 60px;
-  padding-top: 25px;
+  margin-top: 40px;
+  padding-top: 30px;
   border-top: 1px solid var(--sg);
   text-align: center;
 }

@@ -14,11 +14,11 @@
 
       <div class="footer-links">
         <h4>Navigation</h4>
-        <a href="#beranda">Beranda</a>
+        <a href="halaman.php#beranda">Beranda</a>
         <a href="#fitur">Fitur</a>
         <a href="#tema">Tema</a>
         <a href="#harga">Harga</a>
-        <a href="#tentang">Tentang</a>
+        <a href="tentang.php">Tentang</a>
       </div>
 
       <div class="footer-links">
@@ -32,6 +32,7 @@
       <div class="footer-links">
         <h4>Support</h4>
         <a href="FAQ.php">FAQ</a>
+        <a href="afiliasi.php">Afiliasi</a>
         <a href="buat-undangan.php">Cara Order</a>
         <a href="privacy.php">Kebijakan Privasi</a>
         <a href="therms.php">Syarat & Ketentuan</a>

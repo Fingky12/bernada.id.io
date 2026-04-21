@@ -147,5 +147,5 @@
   </section>
     <?php include("./footer/inc_footer_second.php") ?>
   </body>
-  <script src="dashboard.js"></script>
+  <script src="./scripts/dashboard.js"></script>
 </html>

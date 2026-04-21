@@ -171,7 +171,7 @@
             </div>
           </a>
         </div>
-          <a href="tema.php" rel="noopener noreferrer" class="btn-tema">Lihat Semua Tema</a>
+          <a href="./tema_undangan/tema.php" rel="noopener noreferrer" class="btn-tema">Lihat Semua Tema</a>
       </div>
     </section>
 
@@ -260,6 +260,6 @@
   
   <?php include("./footer/inc_footer.php") ?>
   
-  <script src="script.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

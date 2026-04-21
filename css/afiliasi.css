@@ -1,0 +1,428 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --red: #C0393B;
+  --red-d: #8a2020;
+  --red-l: #fff5f5;
+  --red-m: #fde0e0;
+  --dark: #1a1a1a;
+  --gray: #5a5a5a;
+  --light: #f8f6f6;
+  --white: #fff;
+  --border: #e8e0e0;
+  --gold: #c9a227;
+  --gold-l: #fdf8ec;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+}
+
+/* HERO */
+.aff-hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1010 60%, #1a1a1a 100%);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.aff-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(192, 57, 59, .15) 0%, transparent 70%);
+}
+
+.aff-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--red), var(--gold));
+}
+
+.coming-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #e8b84b);
+  color: #1a1a1a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 1.25rem;
+}
+
+.aff-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  position: relative;
+}
+
+.aff-hero h1 em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.aff-hero p {
+  font-size: 15px;
+  color: #888;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+  position: relative;
+}
+
+/* WAITLIST FORM */
+.waitlist-form {
+  max-width: 440px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+.waitlist-form input {
+  flex: 1;
+  min-width: 220px;
+  padding: 13px 18px;
+  border-radius: 9px;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.waitlist-form button {
+  padding: 13px 22px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .2s;
+  white-space: nowrap;
+}
+
+.waitlist-form button:hover {
+  background: var(--red-d);
+}
+
+.waitlist-note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+  position: relative;
+}
+
+/* MAIN */
+.aff-main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+/* HOW IT WORKS */
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: .5rem;
+}
+
+.section-header p {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: var(--red);
+  border-radius: 0 0 4px 4px;
+}
+
+.step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--red-l);
+  color: var(--red);
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.step-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.step-card p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* KOMISI */
+.komisi-section {
+  margin-bottom: 4rem;
+}
+
+.komisi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.komisi-card {
+  border-radius: 14px;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+}
+
+.komisi-card.basic {
+  background: var(--white);
+}
+
+.komisi-card.pro {
+  background: linear-gradient(135deg, #1a1a1a, #2d1a10);
+  color: #fff;
+}
+
+.komisi-card .tier {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+
+.komisi-card.basic .tier {
+  color: var(--red);
+}
+
+.komisi-card.pro .tier {
+  color: var(--gold);
+}
+
+.komisi-card h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  font-family: 'Playfair Display', serif;
+}
+
+.komisi-card.basic h3 {
+  color: var(--red);
+}
+
+.komisi-card.pro h3 {
+  color: var(--gold);
+}
+
+.komisi-card .sub {
+  font-size: 13px;
+  margin-bottom: 1.25rem;
+}
+
+.komisi-card.basic .sub {
+  color: var(--gray);
+}
+
+.komisi-card.pro .sub {
+  color: #888;
+}
+
+.komisi-list {
+  list-style: none;
+  font-size: 13px;
+  line-height: 2.2;
+}
+
+.komisi-card.basic .komisi-list {
+  color: var(--gray);
+}
+
+.komisi-card.pro .komisi-list {
+  color: #bbb;
+}
+
+.komisi-list li::before {
+  content: '✓ ';
+  font-weight: 700;
+}
+
+.komisi-card.basic .komisi-list li::before {
+  color: var(--red);
+}
+
+.komisi-card.pro .komisi-list li::before {
+  color: var(--gold);
+}
+
+.soon-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  background: var(--gold-l);
+  color: var(--gold);
+  border-radius: 20px;
+  font-weight: 600;
+  margin-top: 1rem;
+  border: 1px solid #e8d08a;
+}
+
+.komisi-card.pro .soon-badge {
+  background: rgba(201, 162, 39, .15);
+  color: var(--gold);
+  border-color: rgba(201, 162, 39, .3);
+}
+
+/* FAQ MINI */
+.mini-faq {
+  margin-bottom: 4rem;
+}
+
+.mini-faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 10px;
+}
+
+.mini-faq-item h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--dark);
+}
+
+.mini-faq-item p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* CTA */
+.aff-cta {
+  background: linear-gradient(135deg, #7B1113, #C0393B);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.aff-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: .75rem;
+}
+
+.aff-cta p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, .8);
+  margin-bottom: 1.75rem;
+}
+
+.aff-cta-form {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.aff-cta-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.aff-cta-form button {
+  padding: 12px 22px;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.aff-success {
+  display: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px;
+}
+
+@media (max-width: 640px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .komisi-grid {
+    grid-template-columns: 1fr;
+  }
+}

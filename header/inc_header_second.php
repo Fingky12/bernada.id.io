@@ -1,13 +1,13 @@
   
   <header>
-    <a href="halaman.php" class="logo">BERNADA<span>.ID</span></a>
+    <a href="../halaman.php" class="logo">BERNADA<span>.ID</span></a>
     <nav class="navbar">
-      <a href="halaman.php#beranda">Beranda</a>
-      <a href="halaman.php#fitur">Fitur</a>
-      <a href="halaman.php#tema">Tema</a> 
-      <a href="halaman.php#harga">Harga</a>
-      <a href="kontak.php">Hubungi Kami</a>
-      <a href="halaman.php#tentang">Tentang Kami</a>
+      <a href="../halaman.php#beranda">Beranda</a>
+      <a href="../halaman.php#fitur">Fitur</a>
+      <a href="../halaman.php#tema">Tema</a> 
+      <a href="../halaman.php#harga">Harga</a>
+      <a href="../contact.php">Hubungi Kami</a>
+      <a href="../tentang.php">Tentang Kami</a>
     </nav>
     <?php if (isset($_SESSION['name'])): ?>
     <div class="user-auth">

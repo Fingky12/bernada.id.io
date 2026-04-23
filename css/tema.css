@@ -1,121 +1,287 @@
-
-/* ===========================
-  TEMA SECTION
-=========================== */
-.tema {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  gap: 20px;
-  padding: 100px 11%;
-  background: linear-gradient(to top left, 
-  rgb(255, 215, 208),
-  rgb(255, 255, 255) 50%,
-  rgb(241, 241, 241) 50%);
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Bebas+Neue&family=Carattere&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&family=Dancing+Script:wght@400..700&family=Dosis:wght@200..800&family=Imperial+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Lilita+One&family=Luxurious+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald:wght@200..700&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sacramento&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Tangerine:wght@400;700&family=Varela+Round&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+/* ══════════════════════════════════════
+  RESET & VARIABLES
+══════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.tema-title {
-  text-align: center;
-  margin-bottom: 1rem;
+:root {
+  --r1: #7B1113;
+  --r2: #C0393B;
+  --r3: #e05555;
+  --r4: #fff0f0;
+  --gold: #c9a227;
+  --dark: #1a1a1a;
+  --gray: #5a5a5a;
+  --light: #f8f5f5;
+  --white: #fff;
+  --border: #eedede;
 }
 
-.tema-title h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
-  color: var(--dark);
-}
-
-.tema-title p {
-  width: 100%;
-  font-size: 1.1rem;
-  color: var(--gray);
-  line-height: 1.6;
-  padding: 0 20%;
-  /* margin-top: 7p; */
-}
-
-.tema-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.tema-container {
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.tema-card {
-  width: 310px;
-  text-decoration: none;
-  background: var(--white);
-  border-radius: 17px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  transition: 0.1s;
-}
-
-.tema-card:hover {
-  box-shadow: 0 5px 20px rgba(0,0,0,0.25);
-}
-
-.tema-card h3 {
-  font-family: 'Inter', serif;
-  color: var(--dark);
-  font-size: 1rem;
-  padding: 15px;
-}
-
-.tema-card img {
-  width: 100%;
-  height: 160px;
-  display: block;
-}
-
-.tema-card .tema-info{
-  padding: 0 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.badge {
-  padding: 6px 14px;
+html {
+  scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
-  border-radius: 20px;
-  font-size: 13px;
   font-weight: 600;
 }
 
-.free {
-  background: var(--red);
-  color: var(--white);
+body {
+  background: var(--white);
+  color: var(--dark);
+  overflow-x: hidden;
 }
 
-.premium {
-  background: var(--gold);
-  color: var(--white);
+/* ══════════════════════════════════════
+  SECTION HEADER
+══════════════════════════════════════ */
+.sec-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.btn-tema {
-  display: block;
-  justify-content: center;
-  font-size: 1.2rem;
+.sec-tag {
+  display: inline-block;
+  background: var(--r4);
+  color: var(--r2);
+  font-size: clamp(.42rem, 1.5vw, .65rem);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid #f5c1c1;
+  margin-bottom: .75rem;
+}
+
+.sec-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 4vw, 3.5rem);
+  margin-bottom: .6rem;
+}
+
+.sec-header p {
+  font-size: clamp(1.1rem, 2vw, .78rem);
+  color: var(--gray);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* ══════════════════════════════════════
+    TEMA
+══════════════════════════════════════ */
+.tema {
+  padding: 6rem 8%;
+  background: var(--white);
+}
+
+.tema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.tema-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
   text-decoration: none;
-  margin-top: 30px;
-  color: var(--light);
-  background: var(--red-d);
-  padding: 12px 20px;
-  border-radius: 17px;
+  transition: all .3s;
+  display: block;
+  background: var(--white);
+  position: relative;
 }
 
-.btn-tema:hover {
-  background: var(--red);
-  color: var(--light);
+.tema-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(192, 57, 59, .15);
+  border-color: #f5c1c1;
+}
+
+.tema-card-preview {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tema-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.tema-card:hover .tema-card-preview img {
+  transform: scale(1.08);
+}
+
+/* Preview placeholder untuk tema yang belum ada gambar */
+.tema-preview-merah {
+  height: 220px;
+  background: linear-gradient(160deg, #1a0505, #7B1113 40%, #C0393B);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+.tema-preview-navy {
+  height: 220px;
+  background: linear-gradient(160deg, #0a1628, #1a2e4a 40%, #2d4a6e);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+.tema-preview-pink {
+  height: 220px;
+  background: linear-gradient(160deg, #3d1520, #d4687e 50%, #e8a0b0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+.preview-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: .25rem;
+}
+
+.preview-sub {
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  opacity: .6;
+}
+
+.preview-gold {
+  color: var(--gold) !important;
+}
+
+.tema-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.tema-card:hover .tema-hover-overlay {
+  opacity: 1;
+}
+
+.tema-hover-overlay span {
+  background: #fff;
+  color: var(--dark);
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tema-info {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tema-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.badge.free {
+  background: #eaf7f0;
+  color: #1a7a44;
+  border: 1px solid #a8e0c0;
+}
+
+.badge.premium {
+  color: #fff8e0;
+  background: #ffb814;
+  border: 1px solid #e2a900;
+}
+
+.badge.baru {
+  background: var(--r2);
+  color: var(--r4);
+  border: 1px solid #f5c1c1;
+}
+
+.tema-coming {
+  height: 220px;
+  background: var(--light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  gap: 8px;
+}
+
+.tema-coming i {
+  font-size: 2rem;
+}
+
+.tema-coming span {
+  font-size: 13px;
+}
+
+.btn-center {
+  text-align: center;
+}
+
+.btn-lihat-semua {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--r2);
+  border: 2px solid var(--r2);
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.btn-lihat-semua:hover {
+  background: var(--r2);
+  color: #fff;
+  transform: translateY(-2px);
 }

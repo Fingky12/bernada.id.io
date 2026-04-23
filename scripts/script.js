@@ -29,18 +29,33 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Reveal Animation
+  // Reveal on scroll
   function reveal() {
-    const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    elements.forEach(el => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
       const top = el.getBoundingClientRect().top;
-      const visible = window.innerHeight - 120;
-      el.classList.toggle('active', top < visible);
+      if (top < window.innerHeight - 100) el.classList.add('active');
+      else el.classList.remove('active');
     });
   }
   window.addEventListener('scroll', reveal);
   window.addEventListener('load', reveal);
-  reveal();
+
+  // Alert box auto show & hide
+  const alertBox = document.getElementById('alertBox');
+  if (alertBox) {
+    setTimeout(() => alertBox.classList.add('show'), 100);
+    setTimeout(() => alertBox.classList.remove('show'), 4000);
+  }
+
+  // Search filter tema
+  document.querySelector('.search-wrapper input').addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    document.querySelectorAll('.tema-card').forEach(card => {
+      const nama = card.querySelector('h3')?.textContent.toLowerCase() || '';
+      card.style.opacity = (!q || nama.includes(q)) ? '1' : '0.3';
+    });
+  });
+
 
   // Profile Toggle
   const avatar = document.querySelector('.avatar-circle');

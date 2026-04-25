@@ -216,6 +216,20 @@ if ($name !== null) $_SESSION['name'] = $name;
           <span class="badge baru">Baru</span>
         </div>
       </a>
+      
+        <!-- Tema 4: Sage Garden -->
+      <a href="undangan/sage-garden.php" target="_blank" class="tema-card">
+        <div class="tema-card-preview">
+          <div class="tema-preview-sage" style="height:220px;background:linear-gradient(160deg,#1e2d1f,#2d4a3e 40%,#3d6b44);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
+            <div style="font-family:'Libre Baskerville',serif;font-size:1.6rem">Hendra & Ayu</div>
+            <div style="font-size:11px;letter-spacing:.15em;opacity:.5;text-transform:uppercase;margin-top:.5rem">Sage Garden</div>
+          </div>
+          <div class="tema-hover-overlay"><span>👁 Lihat Preview</span></div>
+        </div>
+        <div class="tema-info">
+          <h3>Sage Garden</h3><span class="badge baru">Baru</span>
+        </div>
+      </a>
 
       <!-- Tema 4: Coming Soon -->
       <div class="tema-card" style="cursor:default">

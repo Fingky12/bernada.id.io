@@ -250,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kirim_pesan'])) {
 
   <?php include("./footer/inc_footer_second.php") ?>
 
-  <script src="scripts/script.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>

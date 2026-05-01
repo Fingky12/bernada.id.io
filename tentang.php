@@ -13,11 +13,11 @@ $name = $_SESSION['name'] ?? null;
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/footer_header_sec.css">
+  <link rel="stylesheet" href="css/tentang.css">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
   <link rel="manifest" href="./favicon_io/site.webmanifest">
-  <link rel="stylesheet" href="css/tentang.css">
 </head>
 
 <body>
@@ -168,7 +168,15 @@ $name = $_SESSION['name'] ?? null;
   </div>
 
   <?php include("./footer/inc_footer_second.php") ?>
-  <script src="scripts/script.js"></script>
+  <script>
+        const profileBox = document.querySelector(".profile-box");
+        const avatarCircle = document.querySelector(".avatar-circle");
+  
+        if (avatarCircle)
+          avatarCircle.addEventListener("click", () =>
+            profileBox.classList.toggle("show"),
+          );
+  </script>
 </body>
 
 </html>

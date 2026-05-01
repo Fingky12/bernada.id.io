@@ -154,6 +154,14 @@ $name = $_SESSION['name'] ?? null;
       msg.style.color = inputId === 'ctaEmail' ? '#fff' : '#2e9e5b';
       msg.textContent = '✓ Terima kasih! Kami akan menghubungimu saat program diluncurkan.';
     }
+
+      const profileBox = document.querySelector(".profile-box");
+      const avatarCircle = document.querySelector(".avatar-circle");
+
+      if (avatarCircle)
+        avatarCircle.addEventListener("click", () =>
+          profileBox.classList.toggle("show"),
+        );
   </script>
 </body>
 

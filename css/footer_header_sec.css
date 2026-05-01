@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
@@ -52,13 +53,13 @@ header {
 }
 
 span {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Inter', serif;
   color: var(--red);
 }
 
 .logo {
   font-family: 'Playfair Display', serif;
-  font-size: 24px;
+  font-size: clamp(1rem, 5.5vw, 1.5rem);
   font-weight: 700;
   color: var(--dark);
   text-decoration: none;
@@ -109,6 +110,7 @@ span {
 ========================= */
 
 .footer {
+  font-family: 'Inter', serif;
   background: var(--dark);
   padding: 40px 8% 20px;
 }
@@ -135,11 +137,12 @@ span {
 }
 
 .footer-brand span {
+  font-family: 'Inter', serif;
   color: var(--red);
 }
 
 .footer-brand p {
-  font-size: 13px;
+  font-size: clamp(0.5rem, 2vw, .8rem);
   color: var(--gray-l);
   line-height: 1.6;
   max-width: 500px;
@@ -178,7 +181,7 @@ span {
 .footer-links a {
   display: block;
   text-decoration: none;
-  font-size: 12px;
+  font-size: clamp(0.5rem, 2vw, .7rem);
   color: var(--gray-l);
   transition: 0.3s ease;
 }

@@ -213,7 +213,98 @@ if ($name !== null) $_SESSION['name'] = $name;
   </section>
 
   <?php include("./footer/inc_footer_second.php") ?>
-  <script src="script.js"></script>
+  <script>
+      const profileBox = document.querySelector(".profile-box");
+      const avatarCircle = document.querySelector(".avatar-circle");
+
+      if (avatarCircle)
+        avatarCircle.addEventListener("click", () =>
+          profileBox.classList.toggle("show"),
+        );
+
+            
+      // Multi Step Form
+      let currentStep = 1;
+
+      function setStep(step) {
+        for (let i = 1; i <= 4; i++) {
+          const sec = document.getElementById("sec" + i);
+          const tab = document.getElementById("tab" + i);
+          if (sec) sec.style.display = i === step ? "block" : "none";
+          if (tab)
+            tab.className =
+              "step-item" + (i === step ? " active" : "") + (i < step ? " done" : "");
+        }
+        currentStep = step;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function nextStep(from) {
+        if (from === 1) {
+          const fields = ["nama_pria", "nama_wanita", "ayah_pria", "ayah_wanita"];
+          const empty = fields.some(
+            (name) => !document.querySelector(`[name=${name}]`)?.value.trim(),
+          );
+          if (empty)
+            return showAlert("error", "Data pengantin & orang tua wajib diisi!");
+        }
+
+        if (from === 2) {
+          const required = [
+            "tanggal_nikah",
+            "lokasi",
+            "waktu_mulai",
+            "waktu_selesai",
+          ];
+          const empty = required.some(
+            (name) => !document.querySelector(`[name=${name}]`)?.value.trim(),
+          );
+          if (empty)
+            return showAlert("error", "Tanggal, waktu, dan lokasi wajib diisi!");
+        }
+
+        hideAlert();
+        setStep(from + 1);
+      }
+
+      function prevStep(from) {
+        setStep(from - 1);
+      }
+
+      function pilihTema(el, nama) {
+        document
+          .querySelectorAll(".tema-card")
+          .forEach((card) => card.classList.remove("active"));
+        el.classList.add("active");
+        const tema = document.getElementById("temaValue");
+        if (tema) tema.value = nama;
+      }
+
+      function showAlert(type, message) {
+        hideAlert();
+        const target = document.getElementById(
+          type === "error" ? "alertError" : "alertSuccess",
+        );
+        if (!target) return;
+        target.textContent = message;
+        target.style.display = "block";
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function hideAlert() {
+        const error = document.getElementById("alertError");
+        const success = document.getElementById("alertSuccess");
+        if (error) error.style.display = "none";
+        if (success) success.style.display = "none";
+      }
+
+      function toggleLoading(show) {
+        const overlay = document.getElementById("loadingOverlay");
+        if (!overlay) return;
+        overlay.classList.toggle("show", show);
+      }
+
+  </script>
 
 </body>
 

@@ -250,7 +250,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kirim_pesan'])) {
 
   <?php include("./footer/inc_footer_second.php") ?>
 
-  <script src="./scripts/script.js"></script>
+  <script>
+      const profileBox = document.querySelector(".profile-box");
+      const avatarCircle = document.querySelector(".avatar-circle");
+
+      if (avatarCircle)
+        avatarCircle.addEventListener("click", () =>
+          profileBox.classList.toggle("show"),
+        );
+  </script>
 </body>
 
 </html>

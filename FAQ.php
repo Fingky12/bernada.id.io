@@ -374,7 +374,7 @@ $name = $_SESSION['name'] ?? null;
     let anyVisible = false;
     document.querySelectorAll('.faq-item').forEach(item => {
       const text = item.querySelector('.faq-q-text').textContent.toLowerCase()
-                 + item.querySelector('.faq-a-inner').textContent.toLowerCase();
+                  + item.querySelector('.faq-a-inner').textContent.toLowerCase();
       const show = !q || text.includes(q);
       item.style.display = show ? 'block' : 'none';
       if (show) anyVisible = true;
@@ -393,6 +393,14 @@ $name = $_SESSION['name'] ?? null;
     const anyVisible = [...document.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
     document.getElementById('noResult').style.display = anyVisible ? 'none' : 'block';
   }
+
+  const profileBox = document.querySelector(".profile-box");
+  const avatarCircle = document.querySelector(".avatar-circle");
+
+  if (avatarCircle)
+    avatarCircle.addEventListener("click", () =>
+      profileBox.classList.toggle("show"),
+    );
 </script>
 </body>
 </html>

@@ -12,8 +12,8 @@ $name = $_SESSION['name'] ?? null;
   <title>Syarat & Ketentuan – Bernada.ID</title>
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/footer_header_sec.css">
-  <link rel="stylesheet" href="./css/therms.css">
+  <link rel="stylesheet" href="css/footer_header_sec.css">
+  <link rel="stylesheet" href="css/therms.css">
   <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
@@ -21,7 +21,7 @@ $name = $_SESSION['name'] ?? null;
 </head>
 
 <body>
-  <?php include("./header/inc_header_second.php") ?>
+  <?php include("header/inc_header_second.php") ?>
 
   <div class="page-hero">
     <div class="page-hero-tag">Legal</div>
@@ -154,7 +154,16 @@ $name = $_SESSION['name'] ?? null;
     </div>
   </div>
 
-  <?php include("./footer/inc_footer_second.php") ?>
+  <?php include("footer/inc_footer_second.php") ?>
+    <script>
+        const profileBox = document.querySelector(".profile-box");
+        const avatarCircle = document.querySelector(".avatar-circle");
+  
+        if (avatarCircle)
+          avatarCircle.addEventListener("click", () =>
+            profileBox.classList.toggle("show"),
+          );
+    </script>
 </body>
 
 </html>

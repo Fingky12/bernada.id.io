@@ -364,7 +364,7 @@ if ($name !== null) $_SESSION['name'] = $name;
     <a href="buat-undangan.php" class="cta-btn"><i class='bx bx-plus' style="font-size:18px"></i> Buat Undangan Sekarang</a>
   </div>
 
-  <?php include("./footer/inc_footer.php") ?>
+  <?php include("footer/inc_footer.php") ?>
 
   <script src="scripts/script.js"></script>
 </body>

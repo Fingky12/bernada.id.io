@@ -1,0 +1,14 @@
+<?php
+require_once '../config/koneksi.php';
+
+$password_baru = 'admin123';
+$hash = password_hash($password_baru, PASSWORD_DEFAULT);
+
+$pdo->prepare("UPDATE admin SET password = ? WHERE username = 'admin'")
+    ->execute([$hash]);
+
+echo "Password berhasil direset!<br>";
+echo "Username: admin<br>";
+echo "Password: admin123<br>";
+echo "Hash: " . $hash;
+?>

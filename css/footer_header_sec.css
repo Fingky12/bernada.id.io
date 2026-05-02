@@ -257,6 +257,6 @@ span {
   transition: 0.3s;
 }
 .profile-box .dropdown-content a:hover {
-  background: var(--r2);
+  background: var(--red);
   color: var(--light);
 }

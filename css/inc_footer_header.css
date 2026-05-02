@@ -122,10 +122,6 @@ body {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 4rem 7% 6rem;
-  background: linear-gradient(135deg,
-      rgba(255, 240, 240, .6) 0%,
-      var(--white) 50%,
-      rgba(26, 26, 26, .03) 100%);
   position: relative;
   overflow: hidden;
   gap: 3rem;
@@ -371,8 +367,11 @@ body {
   FITUR
 ══════════════════════════════════════ */
 .fitur {
+  background-position: center;
+  background-size: cover;
+  background-image: url('../img/bg-fitur.jpg');
+
   padding: 6rem 8%;
-  background: var(--light);
 }
 
 .fitur-grid {
@@ -666,7 +665,9 @@ body {
 ══════════════════════════════════════ */
 .harga {
   padding: 6rem 8%;
-  background: var(--light);
+  background-position: center;
+  background-size: cover;
+  background-image: url('../img/bg-pricing.jpg');
 }
 
 .pricing-grid {

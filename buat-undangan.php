@@ -25,7 +25,7 @@ if ($name !== null) $_SESSION['name'] = $name;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/footer_header.css">
+  <link rel="stylesheet" href="css/footer_header_sec.css">
   <link rel="stylesheet" href="css/buat-undangan.css">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
@@ -35,7 +35,7 @@ if ($name !== null) $_SESSION['name'] = $name;
 </head>
 
 <body>
-  <?php include("./header/inc_header_second.php") ?>
+  <?php include("header/inc_header_second.php") ?>
 
   <section class="buat-undangan" id="buat-undangan">
     <!-- HERO -->
@@ -46,7 +46,7 @@ if ($name !== null) $_SESSION['name'] = $name;
 
     <!-- MAIN -->
     <!-- FORM -->
-    <form id="formUndangan" action="config/proses_undangan.php" method="POST" novalidate>
+    <form id="formUndangan" action="config/proses_order.php" method="POST" novalidate>
       <!-- STEPS BAR -->
       <div class="steps-bar">
         <div class="step-item active" id="tab1"><span class="step-num">1</span> Data Pengantin</div>
@@ -212,7 +212,7 @@ if ($name !== null) $_SESSION['name'] = $name;
     </div>
   </section>
 
-  <?php include("./footer/inc_footer_second.php") ?>
+  <?php include("footer/inc_footer_second.php") ?>
   <script>
       const profileBox = document.querySelector(".profile-box");
       const avatarCircle = document.querySelector(".avatar-circle");

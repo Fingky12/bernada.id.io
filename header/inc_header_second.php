@@ -26,6 +26,9 @@
       <a href="./dashboard.php">
         <button class="btn-login">Masuk</button>
       </a>
+      <a href="../admin/admin_login.php">
+        <button class="btn-login">Admin</button>
+      </a>
     </div>
     <?php endif; ?>
   </header>

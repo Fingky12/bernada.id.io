@@ -610,9 +610,7 @@ require_once '../config/ambil_data.php';
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong><?= $ma ?> - <?= $sa ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
-          <?php if ($maps && $maps !== 'https://maps.google.com'): ?>
-            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
-          <?php endif ?>
+          <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
         </div>
         <div class="detail-card">
           <div class="detail-card-header">
@@ -625,9 +623,7 @@ require_once '../config/ambil_data.php';
           <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
           <div class="detail-row"><strong>Waktu</strong><?= $mr ?> – <?= $sr ?> WIB</div>
           <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
-          <?php if ($maps && $maps !== 'https://maps.google.com'): ?>
-            <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
-          <?php endif ?>
+          <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map' ></i> Lihat di Google Maps</a>
         </div>
       </div>
     </section>

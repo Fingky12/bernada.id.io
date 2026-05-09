@@ -3,14 +3,16 @@ session_start();
 require_once 'config/koneksi.php';
 
 $name = $_SESSION['name'] ?? null;
-$alerts = $_SESSION['alerts'] ?? [];
-$active_form = $_SESSION['active_form'] ?? '';
-
+// Redirect ke login kalau belum login
+if (!$name) {
+    header('Location: dashboard.php?redirect=buat-undangan');
+    exit;
+}
 session_unset();
-
-if ($name !== null) $_SESSION['name'] = $name;
-
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -1016,6 +1018,12 @@ if ($name !== null) $_SESSION['name'] = $name;
 
         <!-- ── STEP 5: KONTAK ── -->
         <div class="card step-section" id="sec5" style="display:none">
+        <?php if (!$name): ?>
+          <div style="background:#fff3e0;border:1px solid #ffd080;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;font-size:13px;color:#7a4f00;display:flex;align-items:center;gap:10px">
+            <i class='bx bx-lock' style="font-size:20px;flex-shrink:0"></i>
+            <div>Kamu belum login. <a href="dashboard.php" style="color:#C0393B;font-weight:600">Login dulu</a> untuk melanjutkan pembuatan undangan.</div>
+          </div>
+        <?php endif ?>
           <div class="card-title"><i class='bx bxs-phone-call'></i> Kontak</div>
           <div class="field">
             <label>Nomor WhatsApp <span class="req">*</span></label>
@@ -1263,6 +1271,13 @@ if ($name !== null) $_SESSION['name'] = $name;
       hideAlert();
 
       const formData = new FormData(this);
+      // Cek login sebelum submit
+      <?php if (!$name): ?>
+        showAlert('error', 'Kamu harus login dulu untuk membuat undangan!');
+        document.getElementById('loadingOverlay').classList.remove('show');
+        setTimeout(() => { window.location.href = 'dashboard.php'; }, 1500);
+        return;
+      <?php endif ?>
 
       fetch('config/proses_order.php', {
           method: 'POST',

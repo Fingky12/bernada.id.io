@@ -22,7 +22,7 @@
   <title>Tema Undangan - BERNADA.ID</title>
 </head>
 <body>
-  <?php include("header/inc_header_second.php") ?>
+  <?php include("./header/inc_header_second.php") ?>
   
   <!-- ══════════════════════════════════════
     TEMA UNDANGAN
@@ -136,6 +136,6 @@
     </div>
   </section>
   
-  <?php include("footer/inc_footer_second.php") ?>
+  <?php include("./footer/inc_footer_second.php") ?>
 </body>
 </html>                                               

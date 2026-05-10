@@ -21,7 +21,7 @@ $name = $_SESSION['name'] ?? null;
 </head>
 
 <body>
-  <?php include("header/inc_header_second.php") ?>
+  <?php include("./header/inc_header_second.php") ?>
 
   <div class="page-hero">
     <div class="page-hero-tag">Legal</div>
@@ -154,7 +154,7 @@ $name = $_SESSION['name'] ?? null;
     </div>
   </div>
 
-  <?php include("footer/inc_footer_second.php") ?>
+  <?php include("./footer/inc_footer_second.php") ?>
     <script>
         const profileBox = document.querySelector(".profile-box");
         const avatarCircle = document.querySelector(".avatar-circle");

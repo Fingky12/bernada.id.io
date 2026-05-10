@@ -8,6 +8,9 @@
       <a href="halaman.php#harga">Harga</a>
       <a href="contact.php">Hubungi Kami</a>
       <a href="tentang.php">Tentang Kami</a>
+      <?php if (isset($_SESSION['name'])): ?>
+      <a href="dashboard_customer.php">Dashboard Saya</a>
+      <?php endif; ?>
     </nav>
     <?php if (isset($_SESSION['name'])): ?>
     <div class="user-auth">
@@ -22,7 +25,7 @@
     </div>
     <?php else: ?>
     <div class="nav-btn">
-      <a href="dashboard.php">
+      <a href="login_register.php">
         <button class="btn-login">Masuk</button>
       </a>
       <a href="admin/admin_login.php" target="_blank">

@@ -1,14 +1,7 @@
 <?php
 session_start();
 require_once 'config/koneksi.php';
-
 $name = $_SESSION['name'] ?? null;
-// Redirect ke login kalau belum login
-if (!$name) {
-    header('Location: dashboard.php?redirect=buat-undangan');
-    exit;
-}
-session_unset();
 ?>
 
 
@@ -799,7 +792,7 @@ session_unset();
 </head>
 
 <body>
-  <?php include("header/inc_header_second.php") ?>
+  <?php include("./header/inc_header_second.php") ?>
 
   <!-- HERO -->
   <div class="page-hero">
@@ -1089,7 +1082,7 @@ session_unset();
     </div>
   </div>
 
-  <?php include("footer/inc_footer_second.php") ?>
+  <?php include("./footer/inc_footer_second.php") ?>
 
   <script>
     const profileBox = document.querySelector(".profile-box");

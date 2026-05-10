@@ -90,7 +90,7 @@ if ($name !== null) $_SESSION['name'] = $name;
           <?php endif; ?>
           <div class="form login" id="login-form">
             <h2>Sign <span>In</span> Account</h2>
-            <form action="auth_proses.php" method="post">
+            <form action="./config/auth_proses.php" method="post">
               <div class="input-box">
                 <div class="icon"><i class="bx bx-envelope"></i></div>
                 <input type="email" name="email" placeholder="Email" required />
@@ -116,7 +116,7 @@ if ($name !== null) $_SESSION['name'] = $name;
 
         <div class="form register" id="register-form"> <!--  -->
           <h2>Sign <span>Up</span> Account</h2>
-          <form action="auth_proses.php" method="post">
+          <form action="./config/auth_proses.php" method="post">
             <div class="input-box">
               <div class="icon"><i class='bx bx-user'></i></div>
               <input type="text" name="name" placeholder="Username" required />

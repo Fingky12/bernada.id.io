@@ -160,7 +160,7 @@ $name = $_SESSION['name'] ?? null;
       <h2>Siap membuat undangan impianmu?</h2>
       <p>Bergabunglah dengan ratusan pasangan yang telah mempercayakan undangan digital mereka kepada Bernada.ID</p>
       <div class="cta-btns">
-        <a href="buat-undangan.php" class="btn-red"><i class='bx bx-plus'></i> Buat Undangan Sekarang</a>
+        <a href="buat_undangan.php" class="btn-red"><i class='bx bx-plus'></i> Buat Undangan Sekarang</a>
         <a href="faq.php" class="btn-ghost"><i class='bx bx-question-mark'></i> Lihat FAQ</a>
       </div>
     </div>

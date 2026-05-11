@@ -642,6 +642,7 @@ $orders = $pdo->query("SELECT * FROM orders $where ORDER BY created_at DESC LIMI
       <a href="admin_dashboard.php?filter=aktif" class="nav-item"><i class='bx bx-check-circle'></i> Undangan Aktif</a>
       <div class="nav-label">Lainnya</div>
       <a href="../halaman.php" class="nav-item" target="_blank"><i class='bx bx-globe'></i> Lihat Website</a>
+      <a href="laporan.php" class="nav-item"><i class='bx bx-bar-chart'></i> Laporan & Analitik</a>
       <a href="admin_logout.php" class="nav-item"><i class='bx bx-log-out'></i> Logout</a>
     </nav>
     <div class="sidebar-foot">

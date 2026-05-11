@@ -13,6 +13,29 @@
       <?php endif; ?>
     </nav>
 
+    <div class="sidebar-container">
+      <div class="close-btn">
+        <i class='bx bx-x'></i>
+        <div class="logo">BERNADA<span>.ID</span></div>
+      </div>
+      <nav class="menu-sidebar">
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#fitur">Fitur</a></li>
+          <li><a href="#tema">Tema</a></li>
+          <li><a href="#harga">Harga</a></li>
+          <li><a href="contact.php">Hubungi Kami</a></li>
+          <li><a href="tentang.php">Tentang Kami</a></li>
+          <?php if (isset($_SESSION['name'])): ?>
+          <li><a href="dashboard_customer.php"><i class='bx bx-bar-chart'></i> Dashboard Saya</a></li>
+          <?php endif; ?>
+        </ul>
+        <div class="footer-sidebar">
+          <p>All rights reserved &copy; 2024</p>
+        </div>
+      </nav>
+    </div>
+
     <?php if (isset($_SESSION['name'])): ?>
     <div class="user-auth">                                                         
       <div class="profile-box">
@@ -36,4 +59,6 @@
       </a>
     </div>
     <?php endif; ?>
+
+    
   </header>

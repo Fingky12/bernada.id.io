@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once 'config/koneksi.php';
+require_once 'koneksi.php';
 
 // ✅ FIX: Kalau sudah login, BLOK semua proses login & register
 // User harus logout dulu sebelum bisa login akun lain
@@ -10,7 +10,7 @@ if (isset($_SESSION['name'])) {
     'type'    => 'error',
     'message' => 'Kamu sudah login! Logout dulu untuk ganti akun.'
   ];
-  header('Location: dashboard.php');
+  header('Location: login_register.php');
   exit();
 }
 
@@ -35,7 +35,7 @@ if (isset($_SESSION['name'])) {
       $_SESSION['active_form'] = 'login';
     }
 
-    header('Location: dashboard.php?login=success');
+    header('Location: login_register.php?login=success');
     exit();
   }
 
@@ -52,7 +52,7 @@ if (isset($_SESSION['name'])) {
         'type' => 'success',
         'message' => 'Login Successful'
     ];
-    header('Location: dashboard.php');
+    header('Location: login_register.php');
     exit();
   }
   else {
@@ -62,7 +62,7 @@ if (isset($_SESSION['name'])) {
     ];
 $_SESSION['active_form'] = 'login';
   }
-  header('Location: dashboard.php');
+  header('Location: login_register.php');
   exit();
   }
 

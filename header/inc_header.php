@@ -14,11 +14,14 @@
     </nav>
 
     <div class="sidebar-container">
-      <div class="close-btn">
-        <i class='bx bx-x'></i>
-        <div class="logo">BERNADA<span>.ID</span></div>
+      <div class="side-btn menu">
+        <i class='bx bx-menu'></i>
       </div>
       <nav class="menu-sidebar">
+        <div class="side-btn close">
+          <i class='bx bx-x'></i>
+        </div>
+        <div class="logo">BERNADA<span>.ID</span></div>
         <ul>
           <li><a href="#beranda">Beranda</a></li>
           <li><a href="#fitur">Fitur</a></li>

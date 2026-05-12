@@ -5,7 +5,14 @@ const registerLink = document.querySelector('.register-link');
 registerLink.addEventListener('click', () => wrapper.classList.add('active'));
 loginLink.addEventListener('click', () => wrapper.classList.remove('active'));
 
-const profileBox = document.querySelector('.profile-box');
+const menuBtn = document.querySelector('.menu');
+const closeBtn = document.querySelector('.close');
+const sidebar = document.querySelector('.menu-sidebar');
+
+menuBtn.addEventListener('click', () => sidebar.classList.add('slide'));
+closeBtn.addEventListener('click', () => sidebar.classList.remove('slide'));
+
+const profileBox = document.querySelector('.profile-box');  
 const avatarCircle = document.querySelector('.avatar-circle');
 
 if (avatarCircle) avatarCircle.addEventListener('click', () => profileBox.classList.toggle('show'));

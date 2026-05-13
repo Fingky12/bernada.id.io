@@ -20,6 +20,7 @@
 }
 
 body {
+  width: 100%;
   background: var(--light);
   color: var(--dark);
 }

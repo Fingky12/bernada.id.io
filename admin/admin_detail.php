@@ -23,6 +23,29 @@ $tgl_fmt  = $hari_id[(int)$tgl_obj->format('w')] . ', ' . $tgl_obj->format('j') 
 $tema_label = ucwords(str_replace('-', ' ', $o['tema']));
 $base_url   = 'http://localhost/WebDev';
 $link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/undangan_index.php?kode={$o['kode_undangan']}&to=" . urlencode($o['nama_pria']) : null;
+
+
+$admin_nama = $_SESSION['admin_nama'] ?? 'Admin';
+
+// Statistik
+$total   = $pdo->query("SELECT COUNT(*) FROM orders")->fetchColumn();
+$baru    = $pdo->query("SELECT COUNT(*) FROM orders WHERE status_order='baru'")->fetchColumn();
+$aktif   = $pdo->query("SELECT COUNT(*) FROM orders WHERE status_order='aktif'")->fetchColumn();
+$pending = $pdo->query("SELECT COUNT(*) FROM orders WHERE status_bayar IN ('menunggu_konfirmasi','pending') AND paket != 'silver'")->fetchColumn();
+$revenue = $pdo->query("SELECT SUM(harga) FROM orders WHERE status_bayar='lunas'")->fetchColumn() ?? 0;
+
+// Filter
+$filter = $_GET['filter'] ?? 'semua';
+$search = trim($_GET['q'] ?? '');
+
+$where = "WHERE 1=1";
+if ($filter === 'baru')    $where .= " AND status_order='baru'";
+if ($filter === 'aktif')   $where .= " AND status_order='aktif'";
+if ($filter === 'bayar')   $where .= " AND status_bayar IN ('menunggu_konfirmasi','pending') AND paket != 'silver'";
+if ($filter === 'silver')  $where .= " AND paket='silver'";
+if ($search) $where .= " AND (nama_pria LIKE '%{$search}%' OR nama_wanita LIKE '%{$search}%' OR kode_order LIKE '%{$search}%' OR no_whatsapp LIKE '%{$search}%')";
+
+$orders = $pdo->query("SELECT * FROM orders $where ORDER BY created_at DESC LIMIT 100")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -449,12 +472,16 @@ $link_undangan = $o['kode_undangan'] ? "{$base_url}/undangan/undangan_index.php?
       <h2>BERNADA<span>.ID</span></h2>
       <p>Admin Panel</p>
     </div>
-    <nav style="padding:1rem 0">
-      <a href="admin_dashboard.php" class="nav-item"><i class='bx bxs-dashboard'></i> Dashboard</a>
-      <a href="admin_dashboard.php?filter=bayar" class="nav-item"><i class='bx bx-credit-card'></i> Konfirmasi Bayar</a>
+    <nav class="sidebar-nav">
+      <div class="nav-label">Menu</div>
+      <a href="admin_dashboard.php" class="nav-item active"><i class='bx bxs-dashboard'></i> Dashboard</a>
+      <a href="admin_dashboard.php?filter=baru" class="nav-item"><i class='bx bx-cart-add'></i> Order Baru <?php if ($baru > 0): ?><span style="background:var(--r);color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;margin-left:auto"><?= $baru ?></span><?php endif ?></a>
+      <a href="admin_dashboard.php?filter=bayar" class="nav-item"><i class='bx bx-credit-card'></i> Konfirmasi Bayar <?php if ($pending > 0): ?><span style="background:#e07820;color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;margin-left:auto"><?= $pending ?></span><?php endif ?></a>
       <a href="admin_dashboard.php?filter=aktif" class="nav-item"><i class='bx bx-check-circle'></i> Undangan Aktif</a>
-      <a href="../halaman.php" class="nav-item" target="_blank"><i class='bx bx-globe'></i> Website</a>
-      <a href="logout.php" class="nav-item"><i class='bx bx-log-out'></i> Logout</a>
+      <div class="nav-label">Lainnya</div>
+      <a href="admin_tema.php" class="nav-item active"><i class='bx bx-palette'></i> Manajemen Tema</a>
+      <a href="laporan.php" class="nav-item"><i class='bx bx-bar-chart'></i> Laporan & Analitik</a>
+      <a href="admin_logout.php" class="nav-item"><i class='bx bx-log-out'></i> Logout</a>
     </nav>
   </div>
 

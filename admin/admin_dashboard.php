@@ -636,14 +636,14 @@ $orders = $pdo->query("SELECT * FROM orders $where ORDER BY created_at DESC LIMI
     </div>
     <nav class="sidebar-nav">
       <div class="nav-label">Menu</div>
-      <a href="admin_dashboard.php" class="nav-item active"><i class='bx bxs-dashboard'></i> Dashboard</a>
+      <a href="admin_dashboard.php" class="nav-item"><i class='bx bxs-dashboard'></i> Dashboard</a>
       <a href="admin_dashboard.php?filter=baru" class="nav-item"><i class='bx bx-cart-add'></i> Order Baru <?php if ($baru > 0): ?><span style="background:var(--r);color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;margin-left:auto"><?= $baru ?></span><?php endif ?></a>
       <a href="admin_dashboard.php?filter=bayar" class="nav-item"><i class='bx bx-credit-card'></i> Konfirmasi Bayar <?php if ($pending > 0): ?><span style="background:#e07820;color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;margin-left:auto"><?= $pending ?></span><?php endif ?></a>
       <a href="admin_dashboard.php?filter=aktif" class="nav-item"><i class='bx bx-check-circle'></i> Undangan Aktif</a>
       <div class="nav-label">Lainnya</div>
-      <a href="../halaman.php" class="nav-item" target="_blank"><i class='bx bx-globe'></i> Lihat Website</a>
-      <a href="laporan.php" class="nav-item"><i class='bx bx-bar-chart'></i> Laporan & Analitik</a>
-      <a href="admin_logout.php" class="nav-item"><i class='bx bx-log-out'></i> Logout</a>
+      <a href="admin_tema.php" class="nav-item"><i class='bx bx-palette'></i> Manajemen Tema</a>
+      <a href="admin_laporan.php" class="nav-item"><i class='bx bx-bar-chart'></i> Laporan & Analitik</a>
+      <a href="logout.php" class="nav-item"><i class='bx bx-log-out'></i> Logout</a>
     </nav>
     <div class="sidebar-foot">
       <div class="admin-info">
@@ -817,6 +817,11 @@ $orders = $pdo->query("SELECT * FROM orders $where ORDER BY created_at DESC LIMI
     </div>
   </div>
 
+
+  <script>
+    const navItem = document.querySelectorAll(".nav-item");
+    navItem.addEventListener('click', () => navItem.classList.add('active'));
+  </script>
 </body>
 
 </html>

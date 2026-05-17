@@ -10,7 +10,7 @@ if (isset($_SESSION['name'])) {
     'type'    => 'error',
     'message' => 'Kamu sudah login! Logout dulu untuk ganti akun.'
   ];
-  header('Location: login_register.php');
+  header('Location: ../login_register.php');
   exit();
 }
 
@@ -35,7 +35,7 @@ if (isset($_SESSION['name'])) {
       $_SESSION['active_form'] = 'login';
     }
 
-    header('Location: login_register.php?login=success');
+    header('Location: ../login_register.php?login=success');
     exit();
   }
 
@@ -62,7 +62,7 @@ if (isset($_SESSION['name'])) {
     ];
 $_SESSION['active_form'] = 'login';
   }
-  header('Location: login_register.php');
+  header('Location: ../login_register.php');
   exit();
   }
 

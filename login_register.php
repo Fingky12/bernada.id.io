@@ -10,8 +10,6 @@ session_unset();
 
 if ($name !== null) $_SESSION['name'] = $name;
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -45,9 +43,7 @@ if ($name !== null) $_SESSION['name'] = $name;
           <p style="font-size: 20px; font-weight: 700; color: #C0393B; margin-bottom: 16px;">
             <?= htmlspecialchars($name) ?>
           </p>
-          <p style="font-size: 13px; color: #888; margin-bottom: 20px;">
-            Untuk masuk dengan akun lain, logout dulu ya!
-          </p>
+          <p style="font-size: 13px; color: #888; margin-bottom: 20px;">Untuk masuk dengan akun lain, logout dulu ya!</p>
           <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
             <a href="halaman.php" style="
               padding: 10px 22px;
@@ -70,7 +66,6 @@ if ($name !== null) $_SESSION['name'] = $name;
             ">Logout</a>
           </div>
         </div>
-
 
       <?php else: ?>
         <div class="img-dashboard">

@@ -52,7 +52,7 @@ if (isset($_SESSION['name'])) {
         'type' => 'success',
         'message' => 'Login Successful'
     ];
-    header('Location: login_register.php');
+    header('Location: ../login_register.php');
     exit();
   }
   else {

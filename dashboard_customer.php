@@ -5,7 +5,7 @@ require_once 'config/koneksi.php';
 // Wajib login
 $name = $_SESSION['name'] ?? null;
 if (!$name) {
-  header('Location: dashboard.php?redirect=my-account');
+  header('Location: login_register.php');
   exit;
 }
 
@@ -50,6 +50,8 @@ function sisaHari($expired = null)
   $diff = strtotime($expired) - time();
   return max(0, (int)ceil($diff / 86400));
 }
+
+$o = $orders[0] ?? null; // order terbaru untuk quick action
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -163,14 +165,12 @@ function sisaHari($expired = null)
       font-weight: 700;
       line-height: 1
     }
-
     .hstat .lbl {
       font-size: 11px;
       color: rgba(255, 255, 255, .55);
       margin-top: 3px;
       white-space: nowrap
     }
-
     /* ── MAIN LAYOUT ── */
     .main-wrap {
       max-width: 1000px;
@@ -179,7 +179,6 @@ function sisaHari($expired = null)
       position: relative;
       z-index: 1;
     }
-
     /* ── QUICK ACTIONS ── */
     .quick-actions {
       display: grid;
@@ -187,7 +186,6 @@ function sisaHari($expired = null)
       gap: 10px;
       margin-bottom: 2rem;
     }
-
     .qa-btn {
       background: var(--white);
       border: 0.5px solid var(--border);
@@ -203,13 +201,11 @@ function sisaHari($expired = null)
       text-align: center;
       cursor: pointer;
     }
-
     .qa-btn:hover {
       border-color: var(--r);
       box-shadow: 0 4px 20px rgba(192, 57, 59, .1);
       transform: translateY(-2px)
     }
-
     .qa-icon {
       width: 42px;
       height: 42px;
@@ -219,32 +215,26 @@ function sisaHari($expired = null)
       justify-content: center;
       font-size: 20px;
     }
-
     .qa-icon.red {
       background: var(--rl);
       color: var(--r)
     }
-
     .qa-icon.green {
       background: #e8f7f0;
       color: #2e9e5b
     }
-
     .qa-icon.blue {
       background: #e8f0ff;
       color: #2d7dd2
     }
-
     .qa-icon.amber {
       background: #fff8e0;
       color: #c9a227
     }
-
     .qa-label {
       font-size: 12px;
       font-weight: 500
     }
-
     /* ── SECTION HEADER ── */
     .sec-head {
       display: flex;
@@ -253,7 +243,6 @@ function sisaHari($expired = null)
       margin-bottom: 1rem;
       gap: 1rem;
     }
-
     .sec-head h2 {
       font-size: 16px;
       font-weight: 600;
@@ -261,21 +250,17 @@ function sisaHari($expired = null)
       align-items: center;
       gap: 8px
     }
-
     .sec-head h2 i {
       color: var(--r)
     }
-
     .sec-head a {
       font-size: 13px;
       color: var(--r);
       text-decoration: none
     }
-
     .sec-head a:hover {
       text-decoration: underline
     }
-
     /* ── ORDER CARDS ── */
     .order-card {
       background: var(--white);
@@ -285,11 +270,9 @@ function sisaHari($expired = null)
       overflow: hidden;
       transition: box-shadow .2s;
     }
-
     .order-card:hover {
       box-shadow: 0 4px 24px rgba(0, 0, 0, .06)
     }
-
     .order-card-top {
       padding: 1.25rem 1.5rem;
       display: flex;
@@ -298,12 +281,10 @@ function sisaHari($expired = null)
       gap: 1rem;
       flex-wrap: wrap;
     }
-
     .order-meta {
       flex: 1;
       min-width: 0
     }
-
     .order-kode {
       font-family: monospace;
       font-size: 11px;
@@ -315,14 +296,12 @@ function sisaHari($expired = null)
       margin-bottom: .5rem;
       font-weight: 600;
     }
-
     .order-nama {
       font-family: 'Playfair Display', serif;
       font-size: 1.2rem;
       color: var(--dark);
       margin-bottom: .25rem;
     }
-
     .order-tema {
       font-size: 12px;
       color: var(--gray);
@@ -330,21 +309,18 @@ function sisaHari($expired = null)
       align-items: center;
       gap: 5px
     }
-
     .tema-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       flex-shrink: 0
     }
-
     .order-badges {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
       align-items: flex-start
     }
-
     .badge {
       display: inline-flex;
       align-items: center;
@@ -354,49 +330,40 @@ function sisaHari($expired = null)
       padding: 4px 10px;
       border-radius: 20px
     }
-
     .badge-aktif {
       background: #e8f7f0;
       color: #2e9e5b
     }
-
     .badge-baru {
       background: #e8f0ff;
       color: #2d7dd2
     }
-
     .badge-diproses {
       background: #fff8e0;
       color: #c9a227
     }
-
     .badge-nonaktif {
       background: #f5f5f5;
       color: #888
     }
-
     .badge-silver {
       background: #f0f0f0;
       color: #666
     }
-
     .badge-gold {
       background: #fff8e0;
       color: #a06000
     }
-
     .badge-platinum {
       background: #f0e8f8;
       color: #6a2d9e
     }
-
     /* Progress masa aktif */
     .order-card-mid {
       padding: .75rem 1.5rem;
       border-top: 0.5px solid var(--border);
       background: var(--light);
     }
-
     .masa-aktif-row {
       display: flex;
       align-items: center;
@@ -404,45 +371,37 @@ function sisaHari($expired = null)
       margin-bottom: .4rem;
       font-size: 12px
     }
-
     .masa-aktif-row .lbl {
       color: var(--gray);
       display: flex;
       align-items: center;
       gap: 5px
     }
-
     .masa-aktif-row .val {
       font-weight: 600;
       color: var(--dark)
     }
-
     .progress-bar-wrap {
       height: 5px;
       background: #e8e0e0;
       border-radius: 99px;
       overflow: hidden
     }
-
     .progress-bar {
       height: 100%;
       border-radius: 99px;
       transition: width .5s;
       background: var(--r)
     }
-
     .progress-bar.green {
       background: #2e9e5b
     }
-
     .progress-bar.amber {
       background: #c9a227
     }
-
     .progress-bar.red {
       background: var(--r)
     }
-
     .expired-tag {
       font-size: 11px;
       font-weight: 600;
@@ -451,7 +410,6 @@ function sisaHari($expired = null)
       padding: 2px 8px;
       border-radius: 6px;
     }
-
     /* Actions bottom */
     .order-card-bot {
       padding: 1rem 1.5rem;
@@ -462,13 +420,11 @@ function sisaHari($expired = null)
       gap: .75rem;
       flex-wrap: wrap;
     }
-
     .order-info-mini {
       display: flex;
       gap: 1.25rem;
       flex-wrap: wrap
     }
-
     .oi {
       font-size: 12px;
       color: var(--gray);
@@ -476,17 +432,14 @@ function sisaHari($expired = null)
       align-items: center;
       gap: 5px
     }
-
     .oi i {
       font-size: 14px
     }
-
     .order-actions {
       display: flex;
       gap: 8px;
       flex-wrap: wrap
     }
-
     .act-btn {
       display: inline-flex;
       align-items: center;
@@ -501,56 +454,45 @@ function sisaHari($expired = null)
       text-decoration: none;
       transition: all .2s;
     }
-
     .act-buka {
       background: var(--r);
       color: #fff
     }
-
     .act-buka:hover {
       background: var(--rd)
     }
-
     .act-salin {
       background: var(--white);
       color: var(--r);
       border: 1px solid var(--rm)
     }
-
     .act-salin:hover {
       background: var(--rl)
     }
-
     .act-wa {
       background: #25D366;
       color: #fff
     }
-
     .act-wa:hover {
       background: #1da851
     }
-
     .act-perpanjang {
       background: #fff8e0;
       color: #a06000;
       border: 1px solid #f0d070
     }
-
     .act-perpanjang:hover {
       background: #a06000;
       color: #fff
     }
-
     .act-detail {
       background: #e8f0ff;
       color: #2d7dd2
     }
-
     .act-detail:hover {
       background: #2d7dd2;
       color: #fff
     }
-
     /* Link undangan box */
     .link-box {
       margin: .75rem 1.5rem;
@@ -562,13 +504,11 @@ function sisaHari($expired = null)
       align-items: center;
       gap: 10px;
     }
-
     .link-box i {
       color: #2d7dd2;
       font-size: 16px;
       flex-shrink: 0
     }
-
     .link-url {
       font-family: monospace;
       font-size: 12px;
@@ -579,7 +519,6 @@ function sisaHari($expired = null)
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
     /* Pending payment box */
     .pending-box {
       margin: .75rem 1.5rem;
@@ -593,13 +532,11 @@ function sisaHari($expired = null)
       font-size: 13px;
       color: #7a4f00;
     }
-
     .pending-box i {
       font-size: 18px;
       flex-shrink: 0;
       margin-top: 1px
     }
-
     /* Empty state */
     .empty-state {
       text-align: center;
@@ -608,25 +545,21 @@ function sisaHari($expired = null)
       border: 0.5px solid var(--border);
       border-radius: 16px;
     }
-
     .empty-state .icon {
       font-size: 3.5rem;
       margin-bottom: 1rem;
       opacity: .4
     }
-
     .empty-state h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       margin-bottom: .5rem
     }
-
     .empty-state p {
       font-size: 14px;
       color: var(--gray);
       margin-bottom: 1.5rem
     }
-
     .btn-buat {
       display: inline-flex;
       align-items: center;
@@ -640,11 +573,9 @@ function sisaHari($expired = null)
       font-weight: 600;
       transition: background .2s;
     }
-
     .btn-buat:hover {
       background: var(--rd)
     }
-
     /* Modal perpanjang */
     .modal-overlay {
       display: none;
@@ -656,11 +587,9 @@ function sisaHari($expired = null)
       justify-content: center;
       padding: 1rem;
     }
-
     .modal-overlay.show {
       display: flex
     }
-
     .modal-box {
       background: var(--white);
       border-radius: 16px;
@@ -669,38 +598,32 @@ function sisaHari($expired = null)
       width: 100%;
       animation: slideUp .3s ease;
     }
-
     @keyframes slideUp {
       from {
         transform: translateY(20px);
         opacity: 0
       }
-
       to {
         transform: translateY(0);
         opacity: 1
       }
     }
-
     .modal-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.25rem;
       margin-bottom: .4rem
     }
-
     .modal-sub {
       font-size: 13px;
       color: var(--gray);
       margin-bottom: 1.5rem
     }
-
     .modal-paket-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin-bottom: 1.25rem
     }
-
     .modal-paket {
       border: 1.5px solid #e0e0e0;
       border-radius: 10px;
@@ -709,34 +632,28 @@ function sisaHari($expired = null)
       cursor: pointer;
       transition: all .2s;
     }
-
     .modal-paket:hover {
       border-color: var(--r)
     }
-
     .modal-paket.selected {
       border-color: var(--r);
       background: var(--rl)
     }
-
     .modal-paket .mp-name {
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 3px
     }
-
     .modal-paket .mp-price {
       font-size: 14px;
       font-weight: 700;
       color: var(--r)
     }
-
     .modal-paket .mp-hari {
       font-size: 11px;
       color: var(--gray);
       margin-top: 2px
     }
-
     .modal-info {
       background: #fff8e0;
       border: 0.5px solid #f0d070;
@@ -747,12 +664,10 @@ function sisaHari($expired = null)
       margin-bottom: 1.25rem;
       line-height: 1.7;
     }
-
     .modal-btns {
       display: flex;
       gap: 10px
     }
-
     .modal-btn-cancel {
       flex: 1;
       padding: 11px;
@@ -765,7 +680,6 @@ function sisaHari($expired = null)
       cursor: pointer;
       font-family: inherit;
     }
-
     .modal-btn-ok {
       flex: 2;
       padding: 11px;
@@ -779,11 +693,9 @@ function sisaHari($expired = null)
       font-family: inherit;
       transition: background .2s;
     }
-
     .modal-btn-ok:hover {
       background: var(--rd)
     }
-
     /* Toast */
     .toast {
       position: fixed;
@@ -802,30 +714,24 @@ function sisaHari($expired = null)
       z-index: 9999;
       white-space: nowrap;
     }
-
     .toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0)
     }
-
     @media(max-width:640px) {
       .account-hero {
         padding: 2rem 5% 4rem
       }
-
       .main-wrap {
         padding: 0 1rem 3rem
       }
-
       .order-card-top {
         flex-direction: column
       }
-
       .order-card-bot {
         flex-direction: column;
         align-items: flex-start
       }
-
       .modal-paket-grid {
         grid-template-columns: 1fr
       }
@@ -884,6 +790,10 @@ function sisaHari($expired = null)
         <div class="qa-icon amber"><i class='bx bxl-whatsapp'></i></div>
         <span class="qa-label">Chat Admin</span>
       </a>
+      <a href="./admin/galery.php?order=<?= $o['kode_order'] ?>" class="qa-btn">
+        <div class="qa-icon amber"><i class='bx bx-image-add'></i></div>
+        <span class="qa-label">Kelola Foto</span>
+      </a>
     </div>
 
     <!-- ORDER LIST -->
@@ -895,7 +805,7 @@ function sisaHari($expired = null)
 
       <?php if (empty($orders)): ?>
         <div class="empty-state">
-          <div class="icon">💌</div>
+          <div class="icon"><i class='bx bx-envelope' ></i></div>
           <h3>Belum Ada Undangan</h3>
           <p>Kamu belum pernah membuat undangan digital.<br>Yuk mulai sekarang!</p>
           <a href="buat_undangan.php" class="btn-buat"><i class='bx bx-plus'></i> Buat Undangan Pertamamu</a>
@@ -910,7 +820,7 @@ function sisaHari($expired = null)
           $is_expired  = $is_aktif && $sisa === 0;
           $tema_label  = ucwords(str_replace('-', ' ', $o['tema']));
           $base_url    = 'http://localhost/WebDev';
-          $link        = $o['kode_undangan'] ? "{$base_url}/undangan/?kode={$o['kode_undangan']}&to=" . urlencode($o['nama_pria']) : null;
+          $link        = $o['kode_undangan'] ? "{$base_url}/undangan/undangan_index.php?kode={$o['kode_undangan']}&to=" . urlencode($o['nama_pria']) : null;
 
           // Warna progress bar
           $bar_color = 'green';
@@ -970,7 +880,7 @@ function sisaHari($expired = null)
                 <i class='bx bx-credit-card'></i>
                 <div>
                   <strong style="display:block;margin-bottom:3px">
-                    <?= $o['status_bayar'] === 'menunggu_konfirmasi' ? '⏳ Menunggu Konfirmasi Pembayaran' : '💳 Belum Bayar' ?>
+                    <?= $o['status_bayar'] === 'menunggu_konfirmasi' ? '<i class="bx bx-loader" ></i> Menunggu Konfirmasi Pembayaran' : '<i class="bx bx-credit-card" ></i> Belum Bayar' ?>
                   </strong>
                   <?php if ($o['status_bayar'] === 'menunggu_konfirmasi'): ?>
                     Bukti transfer sudah diterima. Admin sedang memverifikasi, link undangan akan dikirim via WhatsApp setelah konfirmasi.
@@ -1093,8 +1003,8 @@ function sisaHari($expired = null)
       </div>
 
       <div class="modal-info">
-        💳 Transfer ke <strong>BCA 1234567890</strong> a.n. Bernada ID<br>
-        💚 atau <strong>GoPay/OVO: 0819-3919-5110</strong><br>
+        <i class='bx bx-credit-card' ></i> Transfer ke <strong>BCA 1234567890</strong> a.n. Bernada ID<br>
+        <i class='bx bxs-balloon' ></i> atau <strong>GoPay/OVO: 0819-3919-5110</strong><br>
         Setelah transfer, kirim bukti + kode order ke WhatsApp admin untuk konfirmasi.
       </div>
 

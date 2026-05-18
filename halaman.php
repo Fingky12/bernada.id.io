@@ -238,27 +238,12 @@ if ($name !== null) $_SESSION['name'] = $name;
           <div style="height:220px;background:linear-gradient(160deg,#2c1a0e,#5c3d1e 40%,#8b6340);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
             <div style="font-family:'Cinzel',serif;font-size:1.4rem;letter-spacing:.08em">RAKA & DIRA</div>
             <div class="preview-sub" style="color:rgba(255,255,255,.6)">The Wedding Of</div>
-            <div style="font-size:10px;letter-spacing:.2em;opacity:.45;text-transform:uppercase;margin-top:.75rem;font-family:'Cinzel',serif">Blue Sea</div>
-          </div>
-          <div class="tema-hover-overlay"><span>👁 Lihat Preview</span></div>
-        </div>
-        <div class="tema-info">
-          <h3>Rustic Brown</h3><span class="badge baru">Baru</span>
-        </div>
-      </a>
-
-      <!-- Tema 6: Blue Sea -->
-      <a href="undangan/blue-sea.php" target="_blank" class="tema-card">
-        <div class="tema-card-preview">
-          <div style="height:220px;background:linear-gradient(160deg, #132535,#3ba7ff 40%,#6be3ff);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:1rem">
-            <div style="font-family:'Cinzel',serif;font-size:1.4rem;letter-spacing:.08em">BIMA & IRMA</div>
-            <div class="preview-sub" style="color:rgba(255,255,255,.6)">The Wedding Of</div>
             <div style="font-size:10px;letter-spacing:.2em;opacity:.45;text-transform:uppercase;margin-top:.75rem;font-family:'Cinzel',serif">Rustic Brown</div>
           </div>
           <div class="tema-hover-overlay"><span>👁 Lihat Preview</span></div>
         </div>
         <div class="tema-info">
-          <h3>Blue Sea</h3><span class="badge baru">Baru</span>
+          <h3>Rustic Brown</h3><span class="badge baru">Baru</span>
         </div>
       </a>
 

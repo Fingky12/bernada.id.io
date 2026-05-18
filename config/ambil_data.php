@@ -107,4 +107,22 @@ if ($is_expired && $kode) {
     <a href="/">← Beranda</a>
     <div class="brand">Bernada<span>.ID</span></div></div></body></html>');
 }
+
+// ── AMBIL FOTO GALERI ────────────────────────
+$galeri_fotos = [];
+if (!empty($data['kode_undangan'])) {
+  try {
+    $gstmt = $pdo->prepare("
+            SELECT * FROM galeri_foto
+            WHERE kode_undangan = ? AND status = 'aktif'
+            ORDER BY urutan ASC, id ASC
+        ");
+    $gstmt->execute([$data['kode_undangan']]);
+    $galeri_fotos = $gstmt->fetchAll();
+  } catch (Exception $e) {
+    $galeri_fotos = []; // tabel belum ada, skip
+  }
+}
+$ada_galeri = count($galeri_fotos) > 0;
+
 ?>

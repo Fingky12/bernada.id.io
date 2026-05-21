@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../config/koneksi.php';
-require_once __DIR__ . '/../config/ambil_data.php';
+require_once '../config/koneksi.php';
+require_once '../config/ambil_data.php';
 $galeri_fotos = $galeri_fotos ?? [];
 $ada_galeri = $ada_galeri ?? false;
 $tgl_countdown = $tgl_countdown ?? (($tgl_raw ?? date('Y-m-d')) . 'T' . ($ma ?? '09:00') . ':00+07:00');
@@ -25,38 +25,35 @@ $maps = $maps ?? 'https://maps.google.com';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Pernikahan <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?></title>
-  <meta property="og:title" content="Undangan – <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?>" />
-  <meta property="og:description" content="<?= $tgl_full ?> · <?= htmlspecialchars($lokasi) ?>" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style id="galeri-css-snippet">
+  <title>Undangan <?= htmlspecialchars($pria) ?> & <?= htmlspecialchars($wanita) ?></title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
     *,
     *::before,
     *::after {
       box-sizing: border-box;
       margin: 0;
-      padding: 0;
+      padding: 0
     }
 
     :root {
       --r1: #7B1113;
       --r2: #C0393B;
-      --r3: #e05555;
       --gold: #c9a227;
       --cream: #FDF8F0;
-      --dark: #1a1a1a;
+      --dark: #1a1a1a
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: smooth
     }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--cream);
       color: var(--dark);
-      overflow-x: hidden;
+      overflow-x: hidden
     }
 
     /* COVER */
@@ -70,29 +67,30 @@ $maps = $maps ?? 'https://maps.google.com';
       text-align: center;
       padding: 3rem 1.5rem;
       position: relative;
+      overflow: hidden
     }
 
     .cover::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
     }
 
-    .cover-ornament {
+    .cover-orn {
       font-size: 13px;
       letter-spacing: .25em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 1.5rem;
-      position: relative;
+      position: relative
     }
 
-    .cover-ornament::before,
-    .cover-ornament::after {
+    .cover-orn::before,
+    .cover-orn::after {
       content: '—';
       margin: 0 10px;
-      opacity: .6;
+      opacity: .6
     }
 
     .cover h1 {
@@ -101,14 +99,14 @@ $maps = $maps ?? 'https://maps.google.com';
       color: #fff;
       line-height: 1.1;
       margin-bottom: 1rem;
-      position: relative;
+      position: relative
     }
 
     .cover h1 em {
       color: var(--gold);
       display: block;
       font-style: italic;
-      font-size: .65em;
+      font-size: .65em
     }
 
     .cover-date {
@@ -116,13 +114,13 @@ $maps = $maps ?? 'https://maps.google.com';
       font-size: clamp(1rem, 3vw, 1.4rem);
       color: rgba(255, 255, 255, .75);
       margin-bottom: 2rem;
-      letter-spacing: .05em;
+      letter-spacing: .05em
     }
 
     .cover-to {
       font-size: 13px;
       color: rgba(255, 255, 255, .5);
-      margin-bottom: .5rem;
+      margin-bottom: .5rem
     }
 
     .cover-guest {
@@ -130,7 +128,7 @@ $maps = $maps ?? 'https://maps.google.com';
       font-style: italic;
       font-size: clamp(1.2rem, 4vw, 1.8rem);
       color: #fff;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.5rem
     }
 
     .btn-open {
@@ -141,57 +139,53 @@ $maps = $maps ?? 'https://maps.google.com';
       background: var(--gold);
       color: var(--dark);
       border-radius: 50px;
-      text-decoration: none;
       font-size: 14px;
       font-weight: 600;
-      letter-spacing: .05em;
-      transition: transform .2s, box-shadow .2s;
-      border: none;
       cursor: pointer;
+      border: none;
       font-family: inherit;
-      z-index: 9999;
-      pointer-events: auto;
+      transition: transform .2s, box-shadow .2s;
+      z-index: 1;
     }
 
     .btn-open:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(201, 162, 39, .4);
+      box-shadow: 0 8px 24px rgba(201, 162, 39, .4)
     }
 
     /* CONTENT */
     .content {
-      display: none;
+      display: none
     }
 
     .content.show {
-      display: block;
+      display: block
     }
 
-    /* SECTION */
     section {
-      padding: 5rem 1.5rem;
+      padding: 5rem 1.5rem
     }
 
     .sec-inner {
       max-width: 680px;
       margin: 0 auto;
-      text-align: center;
+      text-align: center
     }
 
-    .ornament {
+    .orn {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: clamp(2.5rem, 6vw, 4rem);
       color: var(--r2);
-      margin-bottom: .25rem;
+      margin-bottom: .25rem
     }
 
-    .sec-label {
+    .sec-lbl {
       font-size: 11px;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: #aaa;
-      margin-bottom: 2rem;
+      margin-bottom: 2rem
     }
 
     .divider {
@@ -199,7 +193,7 @@ $maps = $maps ?? 'https://maps.google.com';
       align-items: center;
       gap: 12px;
       justify-content: center;
-      margin: 1.5rem auto;
+      margin: 1.5rem auto
     }
 
     .divider::before,
@@ -208,19 +202,19 @@ $maps = $maps ?? 'https://maps.google.com';
       flex: 1;
       max-width: 80px;
       height: 1px;
-      background: #e0c8c8;
+      background: #e0c8c8
     }
 
-    .divider-diamond {
+    .diamond {
       width: 8px;
       height: 8px;
       background: var(--r2);
-      transform: rotate(45deg);
+      transform: rotate(45deg)
     }
 
     /* COUPLE */
-    .couple-section {
-      background: #fff;
+    .couple-sec {
+      background: #fff
     }
 
     .couple-grid {
@@ -228,10 +222,10 @@ $maps = $maps ?? 'https://maps.google.com';
       grid-template-columns: 1fr auto 1fr;
       gap: 2rem;
       align-items: center;
-      margin: 2.5rem 0;
+      margin: 2.5rem 0
     }
 
-    .couple-avatar {
+    .c-avatar {
       width: 110px;
       height: 110px;
       border-radius: 50%;
@@ -244,60 +238,52 @@ $maps = $maps ?? 'https://maps.google.com';
       font-size: 2.5rem;
       color: #fff;
       border: 4px solid var(--cream);
-      box-shadow: 0 4px 20px rgba(192, 57, 59, .2);
+      box-shadow: 0 4px 20px rgba(192, 57, 59, .2)
     }
 
-    .couple-card h3 {
+    .c-card h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
-      margin-bottom: 4px;
+      margin-bottom: 4px
     }
 
-    .couple-card .ortu {
+    .c-card .ortu {
       font-size: 13px;
       color: #888;
-      line-height: 1.8;
+      line-height: 1.8
     }
 
-    .amp-big {
+    .amp {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 3rem;
-      color: var(--gold);
+      color: var(--gold)
     }
 
     /* COUNTDOWN */
-    .countdown-section {
-      background: linear-gradient(135deg, var(--r1), var(--r2));
+    .cd-sec {
+      background: linear-gradient(135deg, var(--r1), var(--r2))
     }
 
-    .countdown-section .sec-label {
-      color: rgba(255, 255, 255, .5);
-    }
-
-    .countdown-section .ornament {
-      color: var(--gold);
-    }
-
-    .countdown-section h2 {
+    .cd-sec h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.3rem, 3vw, 1.8rem);
       color: #fff;
-      margin-bottom: 2rem;
+      margin-bottom: 2rem
     }
 
-    .countdown-grid {
+    .cd-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       max-width: 400px;
-      margin: 0 auto;
+      margin: 0 auto
     }
 
     .cd-box {
       background: rgba(255, 255, 255, .1);
       border-radius: 12px;
-      padding: 1.25rem .75rem;
+      padding: 1.25rem .75rem
     }
 
     .cd-num {
@@ -305,74 +291,74 @@ $maps = $maps ?? 'https://maps.google.com';
       font-size: 2.5rem;
       font-weight: 700;
       color: #fff;
-      line-height: 1;
+      line-height: 1
     }
 
-    .cd-label {
+    .cd-lbl {
       font-size: 11px;
       color: rgba(255, 255, 255, .6);
       text-transform: uppercase;
       letter-spacing: .08em;
-      margin-top: 4px;
+      margin-top: 4px
     }
 
     /* DETAIL */
-    .detail-section {
-      background: var(--cream);
+    .detail-sec {
+      background: var(--cream)
     }
 
-    .detail-card {
+    .d-card {
       background: #fff;
       border-radius: 16px;
       padding: 2rem;
       border: 1px solid #eedede;
       margin-bottom: 1.25rem;
-      text-align: left;
+      text-align: left
     }
 
-    .detail-card-header {
+    .d-head {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 1rem;
       padding-bottom: .75rem;
-      border-bottom: 1px solid #f0e0e0;
+      border-bottom: 1px solid #f0e0e0
     }
 
-    .detail-icon {
+    .d-icon {
       width: 44px;
       height: 44px;
-      /* border-radius: 10px; */
-      /* background: linear-gradient(135deg, var(--r1), var(--r2)); */
-      color: var(--r2);
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--r1), var(--r2));
+      color: #fff;
       display: flex;
       align-items: center;
-      font-size: 2.2rem;
       justify-content: center;
+      font-size: 20px
     }
 
-    .detail-card-header h3 {
+    .d-head h3 {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 600
     }
 
-    .detail-card-header p {
+    .d-head p {
       font-size: 12px;
-      color: #aaa;
+      color: #aaa
     }
 
-    .detail-row {
+    .d-row {
       display: flex;
       gap: 8px;
       align-items: flex-start;
       margin-bottom: .6rem;
       font-size: 14px;
-      color: #555;
+      color: #555
     }
 
-    .detail-row strong {
+    .d-row strong {
       color: var(--dark);
-      min-width: 80px;
+      min-width: 80px
     }
 
     .btn-maps {
@@ -386,39 +372,194 @@ $maps = $maps ?? 'https://maps.google.com';
       border-radius: 8px;
       text-decoration: none;
       font-size: 13px;
-      font-weight: 500;
-      transition: background .2s;
+      font-weight: 600;
+      transition: background .2s
     }
 
     .btn-maps:hover {
-      background: var(--r1);
+      background: var(--r1)
+    }
+
+    /* ═══ GALERI FOTO ═══ */
+    .galeri-sec {
+      background: #fff
+    }
+
+    .galeri-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 2rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    .galeri-grid .gf:first-child {
+      grid-column: span 2;
+      grid-row: span 2
+    }
+
+    .gf {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: #f0ece8;
+      cursor: pointer
+    }
+
+    .gf:first-child {
+      aspect-ratio: auto;
+      min-height: 200px
+    }
+
+    .gf img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s
+    }
+
+    .gf:hover img {
+      transform: scale(1.05)
+    }
+
+    .gf-cap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, .6));
+      padding: 1.5rem .75rem .75rem;
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .gf:hover .gf-cap {
+      opacity: 1
+    }
+
+    .gf-cap span {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .9);
+      font-style: italic
+    }
+
+    /* Lightbox */
+    .lb {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1rem
+    }
+
+    .lb.show {
+      display: flex
+    }
+
+    .lb img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      object-fit: contain
+    }
+
+    .lb-cap {
+      color: rgba(255, 255, 255, .7);
+      font-size: 14px;
+      font-style: italic;
+      margin-top: 1rem;
+      text-align: center
+    }
+
+    .lb-ctr {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, .5);
+      font-size: 13px
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, .15);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .lb-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, .15);
+      color: #fff;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s
+    }
+
+    .lb-nav:hover {
+      background: rgba(255, 255, 255, .3)
+    }
+
+    .lb-prev {
+      left: 1rem
+    }
+
+    .lb-next {
+      right: 1rem
     }
 
     /* RSVP */
-    .rsvp-section {
-      background: #fff;
+    .rsvp-sec {
+      background: #fff
     }
 
     .rsvp-form {
       max-width: 440px;
       margin: 0 auto;
-      text-align: left;
+      text-align: left
     }
 
-    .rsvp-field {
-      margin-bottom: 1rem;
+    .rf {
+      margin-bottom: 1rem
     }
 
-    .rsvp-field label {
+    .rf label {
       display: block;
       font-size: 13px;
       font-weight: 500;
       color: #444;
-      margin-bottom: 5px;
+      margin-bottom: 5px
     }
 
-    .rsvp-field input,
-    .rsvp-field select {
+    .rf input,
+    .rf select {
       width: 100%;
       padding: 10px 14px;
       border: 1.5px solid #e0d0d0;
@@ -428,12 +569,12 @@ $maps = $maps ?? 'https://maps.google.com';
       color: var(--dark);
       background: #fafafa;
       outline: none;
-      transition: border-color .2s;
+      transition: border-color .2s
     }
 
-    .rsvp-field input:focus,
-    .rsvp-field select:focus {
-      border-color: var(--r2);
+    .rf input:focus,
+    .rf select:focus {
+      border-color: var(--r2)
     }
 
     .btn-rsvp {
@@ -447,51 +588,50 @@ $maps = $maps ?? 'https://maps.google.com';
       font-weight: 600;
       cursor: pointer;
       font-family: inherit;
-      transition: background .2s;
+      transition: background .2s
     }
 
     .btn-rsvp:hover {
-      background: var(--r1);
+      background: var(--r1)
     }
 
-    .rsvp-success {
+    .rsvp-ok {
       display: none;
       text-align: center;
-      padding: 1.5rem;
+      padding: 1.5rem
     }
 
     /* PENUTUP */
-    .closing-section {
+    .closing-sec {
       background: linear-gradient(160deg, #1a0505, var(--r1));
       text-align: center;
-      padding: 6rem 1.5rem;
+      padding: 6rem 1.5rem
     }
 
-    .closing-section h2 {
+    .closing-sec h2 {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: clamp(1.5rem, 4vw, 2.5rem);
       color: #fff;
-      margin-bottom: 1rem;
+      margin-bottom: 1rem
     }
 
-    .closing-section p {
+    .closing-sec p {
       font-size: 14px;
       color: rgba(255, 255, 255, .65);
       line-height: 1.9;
       max-width: 440px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 2rem
     }
 
     .closing-brand {
-      font-family: 'Playfair Display', serif;
       font-size: 13px;
       color: rgba(255, 255, 255, .3);
-      letter-spacing: .1em;
+      letter-spacing: .1em
     }
 
     .closing-brand span {
-      color: var(--gold);
+      color: var(--gold)
     }
 
     .music-btn {
@@ -511,243 +651,76 @@ $maps = $maps ?? 'https://maps.google.com';
       cursor: pointer;
       border: none;
       box-shadow: 0 4px 16px rgba(192, 57, 59, .4);
-      transition: transform .2s;
+      transition: transform .2s
     }
 
     .music-btn:hover {
-      transform: scale(1.1);
-    }
-
-    /* ── GALERI FOTO ── */
-    .galeri-section {
-      padding: 5rem 1.5rem;
-    }
-
-    /* Tentukan background sesuai tema:
-      Merah Klasik : background: #fff;
-      Navy Elegant : background: var(--white);
-      Blush Pink   : background: var(--cream);
-      Sage Garden  : background: var(--white);
-      Rustic Brown : background: var(--b7);
-    */
-
-    .galeri-grid-foto {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 2rem;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Foto pertama lebih besar */
-    .galeri-grid-foto .gf-item:first-child {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .gf-item {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      aspect-ratio: 1;
-      background: var(--r3);
-      cursor: pointer;
-    }
-
-    .gf-item:first-child {
-      aspect-ratio: auto;
-      min-height: 200px;
-    }
-
-    .gf-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .gf-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .gf-caption-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
-      padding: 1.5rem .75rem .75rem;
-      opacity: 0;
-      transition: opacity .3s;
-    }
-
-    .gf-item:hover .gf-caption-overlay {
-      opacity: 1;
-    }
-
-    .gf-caption-overlay span {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.9);
-      font-style: italic;
-    }
-
-    /* Lightbox */
-    .lightbox-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.92);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 1rem;
-    }
-
-    .lightbox-overlay.show {
-      display: flex;
-    }
-
-    .lightbox-img {
-      max-width: 90vw;
-      max-height: 80vh;
-      border-radius: 8px;
-      object-fit: contain;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .lightbox-caption {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 14px;
-      font-style: italic;
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    .lightbox-nav {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      border: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s;
-    }
-
-    .lightbox-nav:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .lightbox-prev {
-      left: 1rem;
-    }
-
-    .lightbox-next {
-      right: 1rem;
-    }
-
-    .lightbox-close {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-counter {
-      position: fixed;
-      top: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 13px;
+      transform: scale(1.1)
     }
 
     @media(max-width:500px) {
       .couple-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
       }
 
-      .amp-big {
-        display: none;
+      .amp {
+        display: none
       }
 
-      .countdown-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .cd-grid {
+        grid-template-columns: repeat(2, 1fr)
       }
 
-      .galeri-grid-foto {
-        grid-template-columns: repeat(2, 1fr);
+      .galeri-grid {
+        grid-template-columns: repeat(2, 1fr)
       }
 
-      .gf-item:first-child {
-        grid-column: span 2;
+      .galeri-grid .gf:first-child {
+        grid-column: span 2
       }
-
     }
   </style>
 </head>
 
 <body>
+
   <!-- COVER -->
   <div class="cover" id="cover">
-    <div class="cover-ornament">The Wedding Of</div>
-    <h1><?= htmlspecialchars($pria) ?><em>& <?= htmlspecialchars($wanita) ?></em></h1>
+    <div class="cover-orn">The Wedding Of</div>
+    <h1><?= htmlspecialchars($pria) ?><em>&amp; <?= htmlspecialchars($wanita) ?></em></h1>
     <div class="cover-date"><?= $tgl_full ?></div>
     <div class="cover-to">Kepada Yth.</div>
     <div class="cover-guest"><?= htmlspecialchars($tamu) ?></div>
-    <button class="btn-open" onclick="bukaUndangan()"><i class='bx bx-envelope'></i> &nbsp; Buka Undangan</button>
+    <button class="btn-open" onclick="buka()">✉ Buka Undangan</button>
   </div>
 
   <!-- CONTENT -->
-  <div class="content" id="mainContent">
+  <div class="content" id="cnt">
 
     <!-- COUPLE -->
-    <section class="couple-section">
+    <section class="couple-sec">
       <div class="sec-inner">
-        <div class="ornament">Bismillahirrahmanirrahim</div>
-        <div class="sec-label">Dengan Memohon Rahmat dan Ridho Allah SWT</div>
+        <div class="orn">Bismillahirrohmanirrohim</div>
+        <div class="sec-lbl">Dengan Memohon Rahmat dan Ridho Allah SWT</div>
         <div class="divider">
-          <div class="divider-diamond"></div>
+          <div class="diamond"></div>
         </div>
         <div class="couple-grid">
-          <div class="couple-card">
-            <div class="couple-avatar"><?= strtoupper(substr($pria, 0, 1)) ?></div>
+          <div class="c-card">
+            <div class="c-avatar"><?= strtoupper(substr($pria, 0, 1)) ?></div>
             <h3><?= htmlspecialchars($pria) ?></h3>
-            <div class="ortu">
-              Putra dari<br>
+            <div class="ortu">Putra dari<br>
               <?= $ayah_pria ? htmlspecialchars($ayah_pria) : 'Bpk.' ?>
-              <?= $ibu_pria ? '&amp; ' . htmlspecialchars($ibu_pria) : 'Ibu.' ?>
+              <?php if ($ibu_pria): ?>&amp; <?= htmlspecialchars($ibu_pria) ?><?php endif ?>
             </div>
           </div>
-          <div class="amp-big">&amp;</div>
-          <div class="couple-card">
-            <div class="couple-avatar" style="background:linear-gradient(135deg,#8a2020,#C0393B)"><?= strtoupper(substr($wanita, 0, 1)) ?></div>
+          <div class="amp">&amp;</div>
+          <div class="c-card">
+            <div class="c-avatar" style="background:linear-gradient(135deg,#8a2020,#C0393B)"><?= strtoupper(substr($wanita, 0, 1)) ?></div>
             <h3><?= htmlspecialchars($wanita) ?></h3>
-            <div class="ortu">
-              Putri dari<br>
+            <div class="ortu">Putri dari<br>
               <?= $ayah_wanita ? htmlspecialchars($ayah_wanita) : 'Bpk.' ?>
-              <?= $ibu_wanita ? '&amp; ' . htmlspecialchars($ibu_wanita) : 'Ibu.' ?>
+              <?php if ($ibu_wanita): ?>&amp; <?= htmlspecialchars($ibu_wanita) ?><?php endif ?>
             </div>
           </div>
         </div>
@@ -759,151 +732,119 @@ $maps = $maps ?? 'https://maps.google.com';
     </section>
 
     <!-- COUNTDOWN -->
-    <section class="countdown-section">
+    <section class="cd-sec">
       <div class="sec-inner">
-        <div class="ornament" style="color:var(--gold)">◆</div>
-        <div class="sec-label" style="color:rgba(255,255,255,.5)">Menuju Hari Bahagia</div>
+        <div class="orn" style="color:var(--gold)">◆</div>
+        <div class="sec-lbl" style="color:rgba(255,255,255,.5)">Menuju Hari Bahagia</div>
         <h2><?= $tgl_full ?></h2>
-        <div class="countdown-grid">
+        <div class="cd-grid">
           <div class="cd-box">
-            <div class="cd-num" id="cd-h">00</div>
-            <div class="cd-label">Hari</div>
+            <div class="cd-num" id="cdh">00</div>
+            <div class="cd-lbl">Hari</div>
           </div>
           <div class="cd-box">
-            <div class="cd-num" id="cd-j">00</div>
-            <div class="cd-label">Jam</div>
+            <div class="cd-num" id="cdj">00</div>
+            <div class="cd-lbl">Jam</div>
           </div>
           <div class="cd-box">
-            <div class="cd-num" id="cd-m">00</div>
-            <div class="cd-label">Menit</div>
+            <div class="cd-num" id="cdm">00</div>
+            <div class="cd-lbl">Menit</div>
           </div>
           <div class="cd-box">
-            <div class="cd-num" id="cd-s">00</div>
-            <div class="cd-label">Detik</div>
+            <div class="cd-num" id="cds">00</div>
+            <div class="cd-lbl">Detik</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- DETAIL ACARA -->
-    <section class="detail-section">
+    <section class="detail-sec">
       <div class="sec-inner">
-        <div class="ornament">Acara</div>
-        <div class="sec-label">Informasi Pernikahan</div>
-        <div class="detail-card">
-          <div class="detail-card-header">
-            <div class="detail-icon"><i class='bx bx-heart-circle'></i></div>
+        <div class="orn">Acara</div>
+        <div class="sec-lbl">Informasi Pernikahan</div>
+        <div class="d-card">
+          <div class="d-head">
+            <div class="d-icon"><i class='bx bx-book-heart' ></i></div>
             <div>
               <h3>Akad Nikah</h3>
               <p>Prosesi sakral pernikahan</p>
             </div>
           </div>
-          <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
-          <div class="detail-row"><strong>Waktu</strong><?= $ma ?> - <?= $sa ?> WIB</div>
-          <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
-          <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map'></i> Lihat di Google Maps</a>
+          <div class="d-row"><strong>Tanggal : </strong><?= $tgl_full ?></div>
+          <div class="d-row"><strong>Waktu : </strong><?= $ma ?> - <?= $sa ?> WIB</div>
+          <div class="d-row"><strong>Lokasi : </strong><?= htmlspecialchars($lokasi) ?></div>
+          <?php if ($maps): ?><a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Lihat Google Maps</a><?php endif ?>
         </div>
-        <div class="detail-card">
-          <div class="detail-card-header">
-            <div class="detail-icon"><i class='bx bx-home-heart'></i></div>
+        <div class="d-card">
+          <div class="d-head">
+            <div class="d-icon"><i class='bx bxs-florist'></i></div>
             <div>
               <h3>Resepsi Pernikahan</h3>
               <p>Syukuran &amp; jamuan tamu</p>
             </div>
           </div>
-          <div class="detail-row"><strong>Tanggal</strong><?= $tgl_full ?></div>
-          <div class="detail-row"><strong>Waktu</strong><?= $mr ?> – <?= $sr ?> WIB</div>
-          <div class="detail-row"><strong>Lokasi</strong><?= htmlspecialchars($lokasi) ?></div>
-          <a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bxs-map'></i> Lihat di Google Maps</a>
+          <div class="d-row"><strong>Tanggal : </strong><?= $tgl_full ?></div>
+          <div class="d-row"><strong>Waktu : </strong><?= $mr ?> – <?= $sr ?> WIB</div>
+          <div class="d-row"><strong>Lokasi : </strong><?= htmlspecialchars($lokasi) ?></div>
+          <?php if ($maps): ?><a href="<?= htmlspecialchars($maps) ?>" target="_blank" class="btn-maps"><i class='bx bx-map' ></i> Lihat Google Maps</a><?php endif ?>
         </div>
       </div>
     </section>
 
-    <?php
-    // Ensure variables exist to avoid undefined variable notices when this snippet
-    // is included standalone.
-    if (!isset($galeri_fotos) || !is_array($galeri_fotos)) {
-      $galeri_fotos = [];
-    }
-    if (!isset($ada_galeri)) {
-      $ada_galeri = !empty($galeri_fotos);
-    }
-    ?>
-  
-    <!-- SECTION GALERI FOTO (PHP) -->
+    <!-- ═══ GALERI FOTO (otomatis muncul kalau ada foto) ═══ -->
     <?php if ($ada_galeri): ?>
-    <section class="galeri-section">
-      <div class="sec-inner">
-        <!--
-        Sesuaikan class heading dengan tema:
-        - Merah Klasik : <div class="ornament"> + <div class="sec-label">
-        - Navy Elegant : <div class="cinzel-title"> + <div class="gold-line">
-        - Blush Pink   : <div class="script-title">
-        - Sage Garden  : <div class="baskerville-heading"> + <div class="lato-label">
-        - Rustic Brown : <div class="cinzel-title"> + <div class="cinzel-label">
-        -->
-        <div class="ornament">Galeri</div>
-        <div class="sec-label">Momen Berharga Kami</div>
-        <div class="galeri-grid-foto">
-          <?php foreach ($galeri_fotos as $idx => $gf): ?>
-          <div class="gf-item" onclick="bukaLightbox(<?= $idx ?>)">
-            <img
-              src="<?= htmlspecialchars($gf['path_file']) ?>"
-              alt="Foto <?= $idx+1 ?>"
-              loading="lazy"
-            />
-            <?php if ($gf['caption']): ?>
-            <div class="gf-caption-overlay">
-              <span><?= htmlspecialchars($gf['caption']) ?></span>
-            </div>
-            <?php endif ?>
+      <section class="galeri-sec">
+        <div class="sec-inner">
+          <div class="orn">Galeri</div>
+          <div class="sec-lbl">Momen Berharga Kami</div>
+          <div class="divider">
+            <div class="diamond"></div>
           </div>
-          <?php endforeach ?>
+          <div class="galeri-grid">
+            <?php foreach ($galeri_fotos as $idx => $gf): ?>
+              <div class="gf" onclick="lbBuka(<?= $idx ?>)">
+                <img src="../<?= htmlspecialchars($gf['path_file']) ?>" alt="Foto <?= $idx + 1 ?>" loading="lazy" />
+                <?php if ($gf['caption']): ?>
+                  <div class="gf-cap"><span><?= htmlspecialchars($gf['caption']) ?></span></div>
+                <?php endif ?>
+              </div>
+            <?php endforeach ?>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     <?php endif ?>
-    
-    <!-- LIGHTBOX -->
-    <div class="lightbox-overlay" id="lightbox" onclick="tutupLightbox(event)">
-      <span class="lightbox-counter" id="lbCounter"></span>
-      <img class="lightbox-img" id="lbImg" src="" alt=""/>
-      <div class="lightbox-caption" id="lbCaption"></div>
-      <button class="lightbox-nav lightbox-prev" onclick="lbNav(-1);event.stopPropagation()">‹</button>
-      <button class="lightbox-nav lightbox-next" onclick="lbNav(1);event.stopPropagation()">›</button>
-      <button class="lightbox-close" onclick="tutupLightbox()">×</button>
-    </div>
 
     <!-- RSVP -->
-    <section class="rsvp-section">
+    <section class="rsvp-sec">
       <div class="sec-inner">
-        <div class="ornament">RSVP</div>
-        <div class="sec-label">Konfirmasi Kehadiran</div>
+        <div class="orn">RSVP</div>
+        <div class="sec-lbl">Konfirmasi Kehadiran</div>
         <div class="divider">
-          <div class="divider-diamond"></div>
+          <div class="diamond"></div>
         </div>
-        <p style="font-size:14px;color:#888;margin-bottom:1.5rem">Mohon konfirmasi kehadiran kamu paling lambat 7 hari sebelum acara</p>
+        <p style="font-size:14px;color:#888;margin-bottom:1.5rem">Mohon konfirmasi kehadiran paling lambat 7 hari sebelum acara</p>
         <div class="rsvp-form" id="rsvpForm">
-          <div class="rsvp-field"><label>Nama Lengkap</label><input type="text" id="rsvpNama" placeholder="Nama kamu..." value="<?= htmlspecialchars($tamu) ?>" /></div>
-          <div class="rsvp-field"><label>Jumlah Tamu</label>
-            <select id="rsvpJml">
+          <div class="rf"><label>Nama Lengkap</label><input type="text" id="rNama" value="<?= htmlspecialchars($tamu) ?>" placeholder="Nama kamu..." /></div>
+          <div class="rf"><label>Jumlah Tamu</label>
+            <select id="rJml">
               <option>1 orang</option>
               <option>2 orang</option>
               <option>3 orang</option>
               <option>4+ orang</option>
             </select>
           </div>
-          <div class="rsvp-field"><label>Konfirmasi Kehadiran</label>
-            <select id="rsvpHadir">
+          <div class="rf"><label>Kehadiran</label>
+            <select id="rHadir">
               <option value="hadir">✔️ Insya Allah Hadir</option>
               <option value="tidak">❌ Berhalangan Hadir</option>
-              <option value="mungkin">❓ Mungkin Hadir</option>
+              <option value="mungkin">❗ Mungkin Hadir</option>
             </select>
           </div>
           <button class="btn-rsvp" onclick="kirimRSVP()">Kirim Konfirmasi</button>
         </div>
-        <div class="rsvp-success" id="rsvpSuccess">
-          <div style="font-size:48px;margin-bottom:8px">🎉</div>
+        <div class="rsvp-ok" id="rsvpOk">
+          <div style="font-size:48px;margin-bottom:8px"><i class='bx bx-party' ></i></div>
           <p style="font-size:16px;font-weight:600">Terima kasih!</p>
           <p style="font-size:14px;color:#888">Konfirmasi kehadiranmu sudah kami terima.</p>
         </div>
@@ -911,133 +852,122 @@ $maps = $maps ?? 'https://maps.google.com';
     </section>
 
     <!-- PENUTUP -->
-    <section class="closing-section">
+    <section class="closing-sec">
       <div class="sec-inner">
-        <div class="ornament" style="color:var(--gold)">♥</div>
+        <div class="orn" style="color:var(--gold)">♥</div>
         <h2>Merupakan suatu kehormatan dan kebahagiaan bagi kami</h2>
         <p>apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.</p>
         <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,.8);margin-top:1rem">
           <?= htmlspecialchars($pria) ?> &amp; <?= htmlspecialchars($wanita) ?>
         </p>
-        <div style="margin-top:3rem" class="closing-brand">
-          Dibuat dengan ♥ oleh <span>Bernada.ID</span>
-        </div>
+        <div style="margin-top:3rem" class="closing-brand">Dibuat dengan ♥ oleh <span>Bernada.ID</span></div>
       </div>
     </section>
 
-  </div>
+  </div><!-- end content -->
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Musik"><i class='bx bx-music'></i></button>
+  <!-- Lightbox -->
+  <?php if ($ada_galeri): ?>
+    <div class="lb" id="lb" onclick="lbTutup(event)">
+      <span class="lb-ctr" id="lbCtr"></span>
+      <img id="lbImg" src="" alt="" />
+      <div class="lb-cap" id="lbCap"></div>
+      <button class="lb-nav lb-prev" onclick="lbNav(-1);event.stopPropagation()">‹</button>
+      <button class="lb-nav lb-next" onclick="lbNav(1);event.stopPropagation()">›</button>
+      <button class="lb-close" onclick="lbTutup()">×</button>
+    </div>
+    <script>
+      const lbData = <?= json_encode(array_map(fn($f) => ['src' => '../' . $f['path_file'], 'cap' => $f['caption'] ?? ''], $galeri_fotos)) ?>;
+      let lbI = 0;
+
+      function lbBuka(i) {
+        lbI = i;
+        lbShow();
+        document.getElementById('lb').classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function lbShow() {
+        const f = lbData[lbI];
+        document.getElementById('lbImg').src = f.src;
+        document.getElementById('lbCap').textContent = f.cap;
+        document.getElementById('lbCtr').textContent = (lbI + 1) + ' / ' + lbData.length;
+      }
+
+      function lbNav(d) {
+        lbI = (lbI + d + lbData.length) % lbData.length;
+        lbShow();
+      }
+
+      function lbTutup(e) {
+        if (e && e.target !== document.getElementById('lb') && !e.target.classList.contains('lb-close')) return;
+        document.getElementById('lb').classList.remove('show');
+        document.body.style.overflow = '';
+      }
+      document.addEventListener('keydown', e => {
+        if (!document.getElementById('lb').classList.contains('show')) return;
+        if (e.key === 'ArrowLeft') lbNav(-1);
+        if (e.key === 'ArrowRight') lbNav(1);
+        if (e.key === 'Escape') lbTutup({
+          target: document.getElementById('lb')
+        });
+      });
+    </script>
+  <?php endif ?>
+
+  <button class="music-btn" id="mBtn" onclick="togMusic()"><i class='bx bx-music'></i></button>
   <audio id="bgMusic" loop>
-    <!-- <source src="../audio/" type="audio/mpeg" /> -->
+    <source src="../audio/wedding-music.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
-    function bukaUndangan() {
+    function buka() {
       document.getElementById('cover').style.display = 'none';
-      document.getElementById('mainContent').classList.add('show');
+      document.getElementById('cnt').classList.add('show');
       document.getElementById('bgMusic').play().catch(() => {});
     }
-    let playing = false;
+    let mPlay = false;
 
-    function toggleMusic() {
+    function togMusic() {
       const m = document.getElementById('bgMusic'),
-        btn = document.getElementById('musicBtn');
-      if (playing) {
+        b = document.getElementById('mBtn');
+      if (mPlay) {
         m.pause();
-        btn.innerHTML = '<i class="bx bx-music"></i>';
-        playing = false;
+        b.innerHTML = '<i class="bx bx-music"></i>';
+        mPlay = false;
       } else {
         m.play().catch(() => {});
-        btn.textContent = '⏸';
-        playing = true;
+        b.innerHTML = '<i class="bx bx-pause"></i>';
+        mPlay = true;
       }
     }
 
-    const target = new Date("<?= $tgl_countdown ?>").getTime();
-
-    function updateCountdown() {
-      const now = Date.now();
-      const diff = target - now;
-
-      if (diff <= 0) {
-        document.getElementById('cd-h').textContent = '00';
-        document.getElementById('cd-j').textContent = '00';
-        document.getElementById('cd-m').textContent = '00';
-        document.getElementById('cd-s').textContent = '00';
-        return;
-      }
-
-      const h = Math.floor(diff / 86400000);
-      const j = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-
-      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
-      document.getElementById('cd-j').textContent = String(j).padStart(2, '0');
-      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
-      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+    function cd() {
+      const d = new Date('<?= $tgl_countdown ?>').getTime() - Date.now();
+      if (d <= 0) return;
+      document.getElementById('cdh').textContent = String(Math.floor(d / 864e5)).padStart(2, '0');
+      document.getElementById('cdj').textContent = String(Math.floor(d % 864e5 / 36e5)).padStart(2, '0');
+      document.getElementById('cdm').textContent = String(Math.floor(d % 36e5 / 6e4)).padStart(2, '0');
+      document.getElementById('cds').textContent = String(Math.floor(d % 6e4 / 1e3)).padStart(2, '0');
     }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(cd, 1000);
+    cd();
 
     function kirimRSVP() {
-      const nama = document.getElementById('rsvpNama').value.trim();
-      if (!nama) {
-        alert('Mohon isi nama kamu!');
+      const n = document.getElementById('rNama').value.trim();
+      if (!n) {
+        alert('Mohon isi nama!');
         return;
       }
-      const jml = document.getElementById('rsvpJml').value;
-      const hadir = document.getElementById('rsvpHadir');
-      const status = hadir.options[hadir.selectedIndex].text.replace(/^[^\s]+\s+/, '');
-      const p = encodeURIComponent(`Halo! Saya ${nama} ingin konfirmasi kehadiran di pernikahan <?= addslashes($pria) ?> & <?= addslashes($wanita) ?>.\nKehadiran: ${status}\nJumlah: ${jml}`);
+      const j = document.getElementById('rJml').value;
+      const h = document.getElementById('rHadir');
+      const s = h.options[h.selectedIndex].text.replace(/^[^\s]+\s+/, '');
+      const p = encodeURIComponent(`Halo! Saya ${n} konfirmasi kehadiran di pernikahan <?= addslashes($pria) ?> & <?= addslashes($wanita) ?>.\nKehadiran: ${s}\nJumlah: ${j}`);
       window.open(`https://wa.me/6281939195110?text=${p}`, '_blank');
       document.getElementById('rsvpForm').style.display = 'none';
-      document.getElementById('rsvpSuccess').style.display = 'block';
+      document.getElementById('rsvpOk').style.display = 'block';
     }
-
-        
-    const lbFotos = <?= json_encode(array_map(fn($f) => [
-                      'src'     => $f['path_file'],
-                      'caption' => $f['caption'] ?? ''
-                    ], $galeri_fotos)) ?>;
-    let lbIdx = 0;
-
-    function bukaLightbox(idx) {
-      lbIdx = idx;
-      tampilLb();
-      document.getElementById('lightbox').classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function tampilLb() {
-      const f = lbFotos[lbIdx];
-      document.getElementById('lbImg').src = f.src;
-      document.getElementById('lbCaption').textContent = f.caption;
-      document.getElementById('lbCounter').textContent = (lbIdx + 1) + ' / ' + lbFotos.length;
-    }
-
-    function lbNav(dir) {
-      lbIdx = (lbIdx + dir + lbFotos.length) % lbFotos.length;
-      tampilLb();
-    }
-
-    function tutupLightbox(e) {
-      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
-      document.getElementById('lightbox').classList.remove('show');
-      document.body.style.overflow = '';
-    }
-    // Keyboard navigation
-    document.addEventListener('keydown', e => {
-      if (!document.getElementById('lightbox').classList.contains('show')) return;
-      if (e.key === 'ArrowLeft') lbNav(-1);
-      if (e.key === 'ArrowRight') lbNav(1);
-      if (e.key === 'Escape') tutupLightbox({
-        target: document.getElementById('lightbox')
-      });
-    });
-
   </script>
 </body>
+
 </html>

@@ -29,7 +29,6 @@ if ($name !== null) $_SESSION['name'] = $name;
 </head>
 
 <body>
-
   <?php include("./header/inc_header.php") ?>
 
   <!-- ALERT -->
@@ -44,7 +43,7 @@ if ($name !== null) $_SESSION['name'] = $name;
     </div>
   <?php endif; ?>
 
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
     BERANDA / HERO
     ══════════════════════════════════════ -->
   <section class="beranda" id="beranda">

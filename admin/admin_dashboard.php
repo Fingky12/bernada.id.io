@@ -667,7 +667,7 @@ $orders = $pdo->query("SELECT * FROM orders $where ORDER BY created_at DESC LIMI
             <span class="badge-num"><?= $pending ?></span>
           </a>
         <?php endif ?>
-        <a href="admin_logout.php" class="logout-btn"><i class='bx bx-log-out'></i> Logout</a>
+        <a href="logout.php" class="logout-btn"><i class='bx bx-log-out'></i> Logout</a>
       </div>
     </div>
 
